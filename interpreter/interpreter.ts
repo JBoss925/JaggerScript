@@ -11,6 +11,10 @@ type IS = {
   classes: Map<string, Class>,
   functions: Map<Class, Map<String, Func>>
 };
+type BreakException = {
+  token: Tokens.BreakException,
+  state: IS
+};
 
 var id = 0;
 
@@ -415,17 +419,28 @@ function evalReturn(ast: Return, state: IS): [Primitives | Instance, IS] {
 
 function evalBreak(ast: Break, state: IS): [undefined, IS] {
   // console.log("BREAK");
-  return [undefined, state];
+  let be: BreakException = { token: Tokens.BreakException, state: state };
+  throw be;
 }
 
 function evalWhileLoop(ast: WhileLoop, state: IS): [undefined, IS] {
   let [val, newState] = evalExpression(ast.expression, state);
-  let log = "WHILE LOOP ";
+  // let log = "WHILE LOOP ";
   while (val == true) {
-    log += "TRUE: " + val;
-    ast.within.forEach(w => {
-      [, newState] = evalAST(w, newState);
-    });
+    // log += "TRUE: " + val;
+    // Implement breaks w/ exceptions
+    try {
+      for (let w of ast.within) {
+        [, newState] = evalAST(w, newState);
+      }
+    } catch (e) {
+      if (e.token == Tokens.BreakException) {
+        newState = e.state;
+        break;
+      } else {
+        throw e;
+      }
+    }
     [val, newState] = evalExpression(ast.expression, newState);
   }
   return [undefined, newState];

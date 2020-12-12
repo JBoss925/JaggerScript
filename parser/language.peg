@@ -117,7 +117,7 @@ Return = SpaceOrNot "return" val:(SemiColon {return null} / Space ex:Expression?
         value: val
     }
 }
-Break = SpaceOrNot "break" SpaceOrNot SemiColon
+Break = SpaceOrNot "break" SpaceOrNot SemiColon SpaceOrNot
 {
     return {
         tokenType: "Break"
@@ -272,7 +272,16 @@ WithinFunction = (
 / (e:Expression SpaceOrNot SemiColon SpaceOrNot { return e })
 )*
 
-WithinIf = WithinFunction
+WithinIf = (
+(c: Comment { return c })
+/ (b:Break { return b })
+/ (r:Return{ return r })
+/ (d:Definition SpaceOrNot { return d }) 
+/ (wL:WhileLoop SpaceOrNot { return wL })
+/ (ifS:IfBlock SpaceOrNot { return ifS })
+/ (r:Reassignment SpaceOrNot { return r })
+/ (e:Expression SpaceOrNot SemiColon SpaceOrNot { return e })
+)*
 
 WithinLoop = (
 (c: Comment { return c })

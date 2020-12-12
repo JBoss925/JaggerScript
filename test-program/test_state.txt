@@ -225,6 +225,7 @@
                         ]
                       }
                     },
+                    { token: 'B' },
                     {
                       token: 'If',
                       ifBlock: {
@@ -264,8 +265,8 @@
                               token: 'VA',
                               scope: undefined,
                               variableName: 'minRoot',
-                              type: 'number',
-                              typeStr: 'number'
+                              type: 'unknown',
+                              typeStr: 'unknown'
                             },
                             equals: {
                               token: 'VA',
@@ -288,8 +289,8 @@
                               token: 'VA',
                               scope: undefined,
                               variableName: 'maxRoot',
-                              type: 'number',
-                              typeStr: 'number'
+                              type: 'unknown',
+                              typeStr: 'unknown'
                             },
                             equals: {
                               token: 'VA',
@@ -303,7 +304,7 @@
                         ]
                       }
                     },
-                    [length]: 2
+                    [length]: 3
                   ]
                 },
                 {
@@ -349,7 +350,7 @@
       heapPtr: '0'
     }
   },
-  stack: [ Map(0) {}, Map(0) {}, Map(0) {}, Map(0) {}, [length]: 4 ],
+  stack: [ Map(0) {}, Map(0) {}, Map(0) {}, [length]: 3 ],
   runningInstance: {
     token: 'IN',
     type: 'BinarySearch',
@@ -574,6 +575,7 @@
                     ]
                   }
                 },
+                { token: 'B' },
                 {
                   token: 'If',
                   ifBlock: {
@@ -613,8 +615,8 @@
                           token: 'VA',
                           scope: undefined,
                           variableName: 'minRoot',
-                          type: 'number',
-                          typeStr: 'number'
+                          type: 'unknown',
+                          typeStr: 'unknown'
                         },
                         equals: {
                           token: 'VA',
@@ -637,8 +639,8 @@
                           token: 'VA',
                           scope: undefined,
                           variableName: 'maxRoot',
-                          type: 'number',
-                          typeStr: 'number'
+                          type: 'unknown',
+                          typeStr: 'unknown'
                         },
                         equals: {
                           token: 'VA',
@@ -652,7 +654,7 @@
                     ]
                   }
                 },
-                [length]: 2
+                [length]: 3
               ]
             },
             {
@@ -913,6 +915,7 @@
                     ]
                   }
                 },
+                { token: 'B' },
                 {
                   token: 'If',
                   ifBlock: {
@@ -952,8 +955,8 @@
                           token: 'VA',
                           scope: undefined,
                           variableName: 'minRoot',
-                          type: 'number',
-                          typeStr: 'number'
+                          type: 'unknown',
+                          typeStr: 'unknown'
                         },
                         equals: {
                           token: 'VA',
@@ -976,8 +979,8 @@
                           token: 'VA',
                           scope: undefined,
                           variableName: 'maxRoot',
-                          type: 'number',
-                          typeStr: 'number'
+                          type: 'unknown',
+                          typeStr: 'unknown'
                         },
                         equals: {
                           token: 'VA',
@@ -991,7 +994,7 @@
                     ]
                   }
                 },
-                [length]: 2
+                [length]: 3
               ]
             },
             {
@@ -1250,6 +1253,7 @@
                     ]
                   }
                 },
+                { token: 'B' },
                 {
                   token: 'If',
                   ifBlock: {
@@ -1289,8 +1293,8 @@
                           token: 'VA',
                           scope: undefined,
                           variableName: 'minRoot',
-                          type: 'number',
-                          typeStr: 'number'
+                          type: 'unknown',
+                          typeStr: 'unknown'
                         },
                         equals: {
                           token: 'VA',
@@ -1313,8 +1317,8 @@
                           token: 'VA',
                           scope: undefined,
                           variableName: 'maxRoot',
-                          type: 'number',
-                          typeStr: 'number'
+                          type: 'unknown',
+                          typeStr: 'unknown'
                         },
                         equals: {
                           token: 'VA',
@@ -1328,7 +1332,7 @@
                     ]
                   }
                 },
-                [length]: 2
+                [length]: 3
               ]
             },
             {
@@ -1548,6 +1552,7 @@
                         ]
                       }
                     },
+                    { token: 'B' },
                     {
                       token: 'If',
                       ifBlock: {
@@ -1587,8 +1592,8 @@
                               token: 'VA',
                               scope: undefined,
                               variableName: 'minRoot',
-                              type: 'number',
-                              typeStr: 'number'
+                              type: 'unknown',
+                              typeStr: 'unknown'
                             },
                             equals: {
                               token: 'VA',
@@ -1611,8 +1616,8 @@
                               token: 'VA',
                               scope: undefined,
                               variableName: 'maxRoot',
-                              type: 'number',
-                              typeStr: 'number'
+                              type: 'unknown',
+                              typeStr: 'unknown'
                             },
                             equals: {
                               token: 'VA',
@@ -1626,7 +1631,7 @@
                         ]
                       }
                     },
-                    [length]: 2
+                    [length]: 3
                   ]
                 },
                 {
@@ -1869,6 +1874,7 @@
                         ]
                       }
                     },
+                    { token: 'B' },
                     {
                       token: 'If',
                       ifBlock: {
@@ -1908,8 +1914,8 @@
                               token: 'VA',
                               scope: undefined,
                               variableName: 'minRoot',
-                              type: 'number',
-                              typeStr: 'number'
+                              type: 'unknown',
+                              typeStr: 'unknown'
                             },
                             equals: {
                               token: 'VA',
@@ -1932,8 +1938,8 @@
                               token: 'VA',
                               scope: undefined,
                               variableName: 'maxRoot',
-                              type: 'number',
-                              typeStr: 'number'
+                              type: 'unknown',
+                              typeStr: 'unknown'
                             },
                             equals: {
                               token: 'VA',
@@ -1947,7 +1953,7 @@
                         ]
                       }
                     },
-                    [length]: 2
+                    [length]: 3
                   ]
                 },
                 {
@@ -2275,6 +2281,7 @@
                   ]
                 }
               },
+              { token: 'B' },
               {
                 token: 'If',
                 ifBlock: {
@@ -2314,8 +2321,8 @@
                         token: 'VA',
                         scope: undefined,
                         variableName: 'minRoot',
-                        type: 'number',
-                        typeStr: 'number'
+                        type: 'unknown',
+                        typeStr: 'unknown'
                       },
                       equals: {
                         token: 'VA',
@@ -2338,8 +2345,8 @@
                         token: 'VA',
                         scope: undefined,
                         variableName: 'maxRoot',
-                        type: 'number',
-                        typeStr: 'number'
+                        type: 'unknown',
+                        typeStr: 'unknown'
                       },
                       equals: {
                         token: 'VA',
@@ -2353,7 +2360,7 @@
                   ]
                 }
               },
-              [length]: 2
+              [length]: 3
             ]
           },
           {

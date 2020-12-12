@@ -222,6 +222,7 @@
                     ]
                   }
                 },
+                { token: 'B' },
                 {
                   token: 'If',
                   ifBlock: {
@@ -300,7 +301,7 @@
                     ]
                   }
                 },
-                [length]: 2
+                [length]: 3
               ]
             },
             {

@@ -19,6 +19,7 @@ class BinarySearch {
     number maxRoot = of;
     while ((maxRoot - minRoot) >= 0.0001) {
       number midRoot = ((maxRoot + minRoot) / 2);
+      break;
       if(f(midRoot) <= of){
         minRoot = midRoot;
       } else {

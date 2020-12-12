@@ -199,6 +199,7 @@ export enum Tokens {
   Reassignment = "R",
   Return = "RT",
   Break = "B",
+  BreakException = "BE",
   Instantiate = "I",
   Instance = "IN",
   FuncCall = "FC",
