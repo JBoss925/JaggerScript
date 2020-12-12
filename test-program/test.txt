@@ -3,7 +3,7 @@
   classes: [
     <ref *1> {
       token: 'C',
-      name: 'BinarySearch',
+      name: 'BreakTest',
       scope: Map(0) {},
       globalVars: [ [length]: 0 ],
       functions: [
@@ -16,32 +16,9 @@
           within: [
             {
               token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'FC',
-                    functionName: 'cubeRoot',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'number',
-                          value: 9000,
-                          typeStr: 'number',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: undefined
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+              functionName: 'test',
+              args: undefined,
+              scope: undefined
             },
             { token: 'RT', value: undefined },
             [length]: 2
@@ -50,74 +27,14 @@
         {
           token: 'F',
           parent: [Circular *1],
-          name: 'f',
+          name: 'test',
           scopes: Map(0) {},
-          args: {
-            token: 'A',
-            args: [
-              { token: 'AD', type: 'number', identifier: 'x' },
-              [length]: 1
-            ]
-          },
-          within: [
-            {
-              token: 'RT',
-              value: {
-                token: 'AE',
-                left: {
-                  token: 'VA',
-                  scope: undefined,
-                  variableName: 'x',
-                  type: 'unknown',
-                  typeStr: 'unknown'
-                },
-                right: [
-                  {
-                    token: 'AO',
-                    operation: '*',
-                    value: {
-                      token: 'VA',
-                      scope: undefined,
-                      variableName: 'x',
-                      type: 'unknown',
-                      typeStr: 'unknown'
-                    }
-                  },
-                  {
-                    token: 'AO',
-                    operation: '*',
-                    value: {
-                      token: 'VA',
-                      scope: undefined,
-                      variableName: 'x',
-                      type: 'unknown',
-                      typeStr: 'unknown'
-                    }
-                  },
-                  [length]: 2
-                ]
-              }
-            },
-            [length]: 1
-          ]
-        },
-        {
-          token: 'F',
-          parent: [Circular *1],
-          name: 'cubeRoot',
-          scopes: Map(0) {},
-          args: {
-            token: 'A',
-            args: [
-              { token: 'AD', type: 'number', identifier: 'of' },
-              [length]: 1
-            ]
-          },
+          args: undefined,
           within: [
             {
               token: 'D',
               type: 'number',
-              identifier: 'minRoot',
+              identifier: 'i',
               equals: {
                 token: 'V',
                 type: 'number',
@@ -129,91 +46,213 @@
             {
               token: 'D',
               type: 'number',
-              identifier: 'maxRoot',
+              identifier: 'z',
               equals: {
-                token: 'VA',
-                scope: undefined,
-                variableName: 'of',
-                type: 'unknown',
-                typeStr: 'unknown'
+                token: 'V',
+                type: 'number',
+                value: 0,
+                typeStr: 'number',
+                numLiveReferences: 0
+              }
+            },
+            {
+              token: 'D',
+              type: 'number',
+              identifier: 'x',
+              equals: {
+                token: 'V',
+                type: 'number',
+                value: 0,
+                typeStr: 'number',
+                numLiveReferences: 0
+              }
+            },
+            {
+              token: 'D',
+              type: 'number',
+              identifier: 'y',
+              equals: {
+                token: 'V',
+                type: 'number',
+                value: 0,
+                typeStr: 'number',
+                numLiveReferences: 0
               }
             },
             {
               token: 'W',
               expression: {
                 token: 'BE',
-                operator: '>=',
+                operator: '<',
                 left: {
-                  token: 'AE',
-                  left: {
-                    token: 'VA',
-                    scope: undefined,
-                    variableName: 'maxRoot',
-                    type: 'unknown',
-                    typeStr: 'unknown'
-                  },
-                  right: [
-                    {
-                      token: 'AO',
-                      operation: '-',
-                      value: {
-                        token: 'VA',
-                        scope: undefined,
-                        variableName: 'minRoot',
-                        type: 'unknown',
-                        typeStr: 'unknown'
-                      }
-                    },
-                    [length]: 1
-                  ]
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'i',
+                  type: 'unknown',
+                  typeStr: 'unknown'
                 },
                 right: {
                   token: 'V',
                   type: 'number',
-                  value: 0.0001,
+                  value: 1000,
                   typeStr: 'number',
                   numLiveReferences: 0
                 }
               },
               within: [
                 {
-                  token: 'D',
-                  type: 'number',
-                  identifier: 'midRoot',
-                  equals: {
-                    token: 'AE',
+                  token: 'W',
+                  expression: {
+                    token: 'BE',
+                    operator: '<',
                     left: {
-                      token: 'AE',
-                      left: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'z',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    },
+                    right: {
+                      token: 'V',
+                      type: 'number',
+                      value: 1000,
+                      typeStr: 'number',
+                      numLiveReferences: 0
+                    }
+                  },
+                  within: [
+                    {
+                      token: 'R',
+                      variable: {
                         token: 'VA',
                         scope: undefined,
-                        variableName: 'maxRoot',
+                        variableName: 'x',
                         type: 'unknown',
                         typeStr: 'unknown'
                       },
-                      right: [
-                        {
-                          token: 'AO',
-                          operation: '+',
-                          value: {
-                            token: 'VA',
-                            scope: undefined,
-                            variableName: 'minRoot',
-                            type: 'unknown',
-                            typeStr: 'unknown'
-                          }
+                      equals: {
+                        token: 'AE',
+                        left: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'x',
+                          type: 'unknown',
+                          typeStr: 'unknown'
                         },
-                        [length]: 1
-                      ]
+                        right: [
+                          {
+                            token: 'AO',
+                            operation: '+',
+                            value: {
+                              token: 'V',
+                              type: 'number',
+                              value: 1,
+                              typeStr: 'number',
+                              numLiveReferences: 0
+                            }
+                          },
+                          [length]: 1
+                        ]
+                      }
+                    },
+                    {
+                      token: 'R',
+                      variable: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'z',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      equals: {
+                        token: 'AE',
+                        left: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'z',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        },
+                        right: [
+                          {
+                            token: 'AO',
+                            operation: '+',
+                            value: {
+                              token: 'V',
+                              type: 'number',
+                              value: 1,
+                              typeStr: 'number',
+                              numLiveReferences: 0
+                            }
+                          },
+                          [length]: 1
+                        ]
+                      }
+                    },
+                    { token: 'B' },
+                    [length]: 3
+                  ]
+                },
+                {
+                  token: 'R',
+                  variable: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'y',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  equals: {
+                    token: 'AE',
+                    left: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'y',
+                      type: 'unknown',
+                      typeStr: 'unknown'
                     },
                     right: [
                       {
                         token: 'AO',
-                        operation: '/',
+                        operation: '+',
                         value: {
                           token: 'V',
                           type: 'number',
-                          value: 2,
+                          value: 1,
+                          typeStr: 'number',
+                          numLiveReferences: 0
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  }
+                },
+                {
+                  token: 'R',
+                  variable: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'i',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  equals: {
+                    token: 'AE',
+                    left: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'i',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    },
+                    right: [
+                      {
+                        token: 'AO',
+                        operation: '+',
+                        value: {
+                          token: 'V',
+                          type: 'number',
+                          value: 1,
                           typeStr: 'number',
                           numLiveReferences: 0
                         }
@@ -223,116 +262,101 @@
                   }
                 },
                 { token: 'B' },
-                {
-                  token: 'If',
-                  ifBlock: {
-                    expression: {
-                      token: 'BE',
-                      operator: '<=',
-                      left: {
-                        token: 'FC',
-                        functionName: 'f',
-                        args: {
-                          token: 'AI',
-                          args: [
-                            {
-                              token: 'VA',
-                              scope: undefined,
-                              variableName: 'midRoot',
-                              type: 'unknown',
-                              typeStr: 'unknown'
-                            },
-                            [length]: 1
-                          ]
-                        },
-                        scope: undefined
-                      },
-                      right: {
-                        token: 'VA',
-                        scope: undefined,
-                        variableName: 'of',
-                        type: 'unknown',
-                        typeStr: 'unknown'
-                      }
-                    },
-                    within: [
-                      {
-                        token: 'R',
-                        variable: {
-                          token: 'VA',
-                          scope: undefined,
-                          variableName: 'minRoot',
-                          type: 'unknown',
-                          typeStr: 'unknown'
-                        },
-                        equals: {
-                          token: 'VA',
-                          scope: undefined,
-                          variableName: 'midRoot',
-                          type: 'unknown',
-                          typeStr: 'unknown'
-                        }
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  elifBlocks: [ [length]: 0 ],
-                  elseBlock: {
-                    token: 'E',
-                    within: [
-                      {
-                        token: 'R',
-                        variable: {
-                          token: 'VA',
-                          scope: undefined,
-                          variableName: 'maxRoot',
-                          type: 'unknown',
-                          typeStr: 'unknown'
-                        },
-                        equals: {
-                          token: 'VA',
-                          scope: undefined,
-                          variableName: 'midRoot',
-                          type: 'unknown',
-                          typeStr: 'unknown'
-                        }
-                      },
-                      [length]: 1
-                    ]
-                  }
-                },
-                [length]: 3
+                [length]: 4
               ]
             },
             {
-              token: 'RT',
-              value: {
-                token: 'VA',
-                scope: undefined,
-                variableName: 'midRoot',
-                type: 'unknown',
-                typeStr: 'unknown'
-              }
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'i',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
             },
-            [length]: 4
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'z',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'x',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'y',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            { token: 'RT', value: undefined },
+            [length]: 10
           ]
         },
-        [length]: 3
+        [length]: 2
       ],
       construct: {
         token: 'CO',
         parent: [Circular *1],
         args: undefined,
         within: [
-          { token: 'COM', comment: 'Here is a comment!' },
           {
             token: 'COM',
-            comment: 'In this example, we compute the cube root'
+            comment: 'This is a program that tests loop breaks.'
           },
           {
             token: 'COM',
-            comment: 'of 20 to within 0.001 using binary search.'
+            comment: "When working, this should log '1' four times"
           },
+          { token: 'COM', comment: 'in the console.' },
           [length]: 3
         ]
       }

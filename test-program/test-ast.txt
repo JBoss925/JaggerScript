@@ -1,21 +1,21 @@
 [
   {
     tokenType: 'Class',
-    className: 'BinarySearch',
+    className: 'BreakTest',
     within: [
       {
         tokenType: 'Constructor',
         args: null,
         within: [
-          { tokenType: 'Comment', comment: 'Here is a comment!' },
           {
             tokenType: 'Comment',
-            comment: 'In this example, we compute the cube root'
+            comment: 'This is a program that tests loop breaks.'
           },
           {
             tokenType: 'Comment',
-            comment: 'of 20 to within 0.001 using binary search.'
+            comment: "When working, this should log '1' four times"
           },
+          { tokenType: 'Comment', comment: 'in the console.' },
           [length]: 3
         ]
       },
@@ -26,30 +26,9 @@
         within: [
           {
             tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
-                {
-                  tokenType: 'FuncCall',
-                  functionName: 'cubeRoot',
-                  args: {
-                    tokenType: 'ArgumentsIn',
-                    args: [
-                      {
-                        tokenType: 'Primitive',
-                        type: 'number',
-                        value: 9000
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  scope: null
-                },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+            functionName: 'test',
+            args: null,
+            scope: null
           },
           { tokenType: 'Return', value: null },
           [length]: 2
@@ -57,122 +36,169 @@
       },
       {
         tokenType: 'Function',
-        funcName: 'f',
-        args: {
-          tokenType: 'ArgumentsDefine',
-          args: [ { type: 'number', identifier: 'x' }, [length]: 1 ]
-        },
-        within: [
-          {
-            tokenType: 'Return',
-            value: {
-              tokenType: 'ArithmeticExpression',
-              left: { tokenType: 'Variable', scope: null, variableName: 'x' },
-              right: [
-                {
-                  op: '*',
-                  value: {
-                    tokenType: 'Variable',
-                    scope: null,
-                    variableName: 'x'
-                  }
-                },
-                {
-                  op: '*',
-                  value: {
-                    tokenType: 'Variable',
-                    scope: null,
-                    variableName: 'x'
-                  }
-                },
-                [length]: 2
-              ]
-            }
-          },
-          [length]: 1
-        ]
-      },
-      {
-        tokenType: 'Function',
-        funcName: 'cubeRoot',
-        args: {
-          tokenType: 'ArgumentsDefine',
-          args: [ { type: 'number', identifier: 'of' }, [length]: 1 ]
-        },
+        funcName: 'test',
+        args: null,
         within: [
           {
             tokenType: 'Definition',
             type: 'number',
-            identifier: 'minRoot',
+            identifier: 'i',
             equals: { tokenType: 'Primitive', type: 'number', value: 0 }
           },
           {
             tokenType: 'Definition',
             type: 'number',
-            identifier: 'maxRoot',
-            equals: { tokenType: 'Variable', scope: null, variableName: 'of' }
+            identifier: 'z',
+            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
+          },
+          {
+            tokenType: 'Definition',
+            type: 'number',
+            identifier: 'x',
+            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
+          },
+          {
+            tokenType: 'Definition',
+            type: 'number',
+            identifier: 'y',
+            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
           },
           {
             tokenType: 'WhileLoop',
             expression: {
               tokenType: 'BooleanExpression',
-              op: '>=',
-              left: {
-                tokenType: 'ArithmeticExpression',
-                left: {
-                  tokenType: 'Variable',
-                  scope: null,
-                  variableName: 'maxRoot'
-                },
-                right: [
-                  {
-                    tokenType: 'ArithmeticOperation',
-                    op: '-',
-                    value: {
-                      tokenType: 'Variable',
-                      scope: null,
-                      variableName: 'minRoot'
-                    }
-                  },
-                  [length]: 1
-                ]
-              },
-              right: { tokenType: 'Primitive', type: 'number', value: 0.0001 }
+              op: '<',
+              left: { tokenType: 'Variable', scope: null, variableName: 'i' },
+              right: { tokenType: 'Primitive', type: 'number', value: 1000 }
             },
             within: [
               {
-                tokenType: 'Definition',
-                type: 'number',
-                identifier: 'midRoot',
+                tokenType: 'WhileLoop',
+                expression: {
+                  tokenType: 'BooleanExpression',
+                  op: '<',
+                  left: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'z'
+                  },
+                  right: {
+                    tokenType: 'Primitive',
+                    type: 'number',
+                    value: 1000
+                  }
+                },
+                within: [
+                  {
+                    tokenType: 'Reassignment',
+                    variable: {
+                      tokenType: 'Variable',
+                      scope: null,
+                      variableName: 'x'
+                    },
+                    equals: {
+                      tokenType: 'ArithmeticExpression',
+                      left: {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'x'
+                      },
+                      right: [
+                        {
+                          tokenType: 'ArithmeticOperation',
+                          op: '+',
+                          value: {
+                            tokenType: 'Primitive',
+                            type: 'number',
+                            value: 1
+                          }
+                        },
+                        [length]: 1
+                      ]
+                    }
+                  },
+                  {
+                    tokenType: 'Reassignment',
+                    variable: {
+                      tokenType: 'Variable',
+                      scope: null,
+                      variableName: 'z'
+                    },
+                    equals: {
+                      tokenType: 'ArithmeticExpression',
+                      left: {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'z'
+                      },
+                      right: [
+                        {
+                          tokenType: 'ArithmeticOperation',
+                          op: '+',
+                          value: {
+                            tokenType: 'Primitive',
+                            type: 'number',
+                            value: 1
+                          }
+                        },
+                        [length]: 1
+                      ]
+                    }
+                  },
+                  { tokenType: 'Break' },
+                  [length]: 3
+                ]
+              },
+              {
+                tokenType: 'Reassignment',
+                variable: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'y'
+                },
                 equals: {
                   tokenType: 'ArithmeticExpression',
                   left: {
-                    tokenType: 'ArithmeticExpression',
-                    left: {
-                      tokenType: 'Variable',
-                      scope: null,
-                      variableName: 'maxRoot'
-                    },
-                    right: [
-                      {
-                        tokenType: 'ArithmeticOperation',
-                        op: '+',
-                        value: {
-                          tokenType: 'Variable',
-                          scope: null,
-                          variableName: 'minRoot'
-                        }
-                      },
-                      [length]: 1
-                    ]
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'y'
                   },
                   right: [
                     {
-                      op: '/',
+                      tokenType: 'ArithmeticOperation',
+                      op: '+',
                       value: {
                         tokenType: 'Primitive',
                         type: 'number',
-                        value: 2
+                        value: 1
+                      }
+                    },
+                    [length]: 1
+                  ]
+                }
+              },
+              {
+                tokenType: 'Reassignment',
+                variable: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'i'
+                },
+                equals: {
+                  tokenType: 'ArithmeticExpression',
+                  left: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'i'
+                  },
+                  right: [
+                    {
+                      tokenType: 'ArithmeticOperation',
+                      op: '+',
+                      value: {
+                        tokenType: 'Primitive',
+                        type: 'number',
+                        value: 1
                       }
                     },
                     [length]: 1
@@ -180,87 +206,78 @@
                 }
               },
               { tokenType: 'Break' },
-              {
-                tokenType: 'IfBlock',
-                ifBlock: {
-                  expression: {
-                    tokenType: 'BooleanExpression',
-                    op: '<=',
-                    left: {
-                      tokenType: 'FuncCall',
-                      functionName: 'f',
-                      args: {
-                        tokenType: 'ArgumentsIn',
-                        args: [
-                          {
-                            tokenType: 'Variable',
-                            scope: null,
-                            variableName: 'midRoot'
-                          },
-                          [length]: 1
-                        ]
-                      },
-                      scope: null
-                    },
-                    right: {
-                      tokenType: 'Variable',
-                      scope: null,
-                      variableName: 'of'
-                    }
-                  },
-                  within: [
-                    {
-                      tokenType: 'Reassignment',
-                      variable: {
-                        tokenType: 'Variable',
-                        scope: null,
-                        variableName: 'minRoot'
-                      },
-                      equals: {
-                        tokenType: 'Variable',
-                        scope: null,
-                        variableName: 'midRoot'
-                      }
-                    },
-                    [length]: 1
-                  ]
-                },
-                elifBlocks: [ [length]: 0 ],
-                elseBlock: {
-                  tokenType: 'ElseBlock',
-                  within: [
-                    {
-                      tokenType: 'Reassignment',
-                      variable: {
-                        tokenType: 'Variable',
-                        scope: null,
-                        variableName: 'maxRoot'
-                      },
-                      equals: {
-                        tokenType: 'Variable',
-                        scope: null,
-                        variableName: 'midRoot'
-                      }
-                    },
-                    [length]: 1
-                  ]
-                }
-              },
-              [length]: 3
+              [length]: 4
             ]
           },
           {
-            tokenType: 'Return',
-            value: {
-              tokenType: 'Variable',
-              scope: null,
-              variableName: 'midRoot'
-            }
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'i'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
           },
-          [length]: 4
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'z'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'x'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'y'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          { tokenType: 'Return', value: null },
+          [length]: 10
         ]
       },
-      [length]: 4
+      [length]: 3
     ]
   },
   [length]: 1
