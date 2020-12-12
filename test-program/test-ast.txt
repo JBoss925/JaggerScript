@@ -1,0 +1,266 @@
+[
+  {
+    tokenType: 'Class',
+    className: 'BinarySearch',
+    within: [
+      {
+        tokenType: 'Constructor',
+        args: null,
+        within: [
+          { tokenType: 'Comment', comment: 'Here is a comment!' },
+          {
+            tokenType: 'Comment',
+            comment: 'In this example, we compute the cube root'
+          },
+          {
+            tokenType: 'Comment',
+            comment: 'of 20 to within 0.001 using binary search.'
+          },
+          [length]: 3
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'main',
+        args: null,
+        within: [
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'cubeRoot',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Primitive',
+                        type: 'number',
+                        value: 9000
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: null
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          { tokenType: 'Return', value: null },
+          [length]: 2
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'f',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'number', identifier: 'x' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Return',
+            value: {
+              tokenType: 'ArithmeticExpression',
+              left: { tokenType: 'Variable', scope: null, variableName: 'x' },
+              right: [
+                {
+                  op: '*',
+                  value: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'x'
+                  }
+                },
+                {
+                  op: '*',
+                  value: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'x'
+                  }
+                },
+                [length]: 2
+              ]
+            }
+          },
+          [length]: 1
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'cubeRoot',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'number', identifier: 'of' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Definition',
+            type: 'number',
+            identifier: 'minRoot',
+            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
+          },
+          {
+            tokenType: 'Definition',
+            type: 'number',
+            identifier: 'maxRoot',
+            equals: { tokenType: 'Variable', scope: null, variableName: 'of' }
+          },
+          {
+            tokenType: 'WhileLoop',
+            expression: {
+              tokenType: 'BooleanExpression',
+              op: '>=',
+              left: {
+                tokenType: 'ArithmeticExpression',
+                left: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'maxRoot'
+                },
+                right: [
+                  {
+                    tokenType: 'ArithmeticOperation',
+                    op: '-',
+                    value: {
+                      tokenType: 'Variable',
+                      scope: null,
+                      variableName: 'minRoot'
+                    }
+                  },
+                  [length]: 1
+                ]
+              },
+              right: { tokenType: 'Primitive', type: 'number', value: 0.0001 }
+            },
+            within: [
+              {
+                tokenType: 'Definition',
+                type: 'number',
+                identifier: 'midRoot',
+                equals: {
+                  tokenType: 'ArithmeticExpression',
+                  left: {
+                    tokenType: 'ArithmeticExpression',
+                    left: {
+                      tokenType: 'Variable',
+                      scope: null,
+                      variableName: 'maxRoot'
+                    },
+                    right: [
+                      {
+                        tokenType: 'ArithmeticOperation',
+                        op: '+',
+                        value: {
+                          tokenType: 'Variable',
+                          scope: null,
+                          variableName: 'minRoot'
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  right: [
+                    {
+                      op: '/',
+                      value: {
+                        tokenType: 'Primitive',
+                        type: 'number',
+                        value: 2
+                      }
+                    },
+                    [length]: 1
+                  ]
+                }
+              },
+              {
+                tokenType: 'IfBlock',
+                ifBlock: {
+                  expression: {
+                    tokenType: 'BooleanExpression',
+                    op: '<=',
+                    left: {
+                      tokenType: 'FuncCall',
+                      functionName: 'f',
+                      args: {
+                        tokenType: 'ArgumentsIn',
+                        args: [
+                          {
+                            tokenType: 'Variable',
+                            scope: null,
+                            variableName: 'midRoot'
+                          },
+                          [length]: 1
+                        ]
+                      },
+                      scope: null
+                    },
+                    right: {
+                      tokenType: 'Variable',
+                      scope: null,
+                      variableName: 'of'
+                    }
+                  },
+                  within: [
+                    {
+                      tokenType: 'Reassignment',
+                      variable: {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'minRoot'
+                      },
+                      equals: {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'midRoot'
+                      }
+                    },
+                    [length]: 1
+                  ]
+                },
+                elifBlocks: [ [length]: 0 ],
+                elseBlock: {
+                  tokenType: 'ElseBlock',
+                  within: [
+                    {
+                      tokenType: 'Reassignment',
+                      variable: {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'maxRoot'
+                      },
+                      equals: {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'midRoot'
+                      }
+                    },
+                    [length]: 1
+                  ]
+                }
+              },
+              [length]: 2
+            ]
+          },
+          {
+            tokenType: 'Return',
+            value: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'midRoot'
+            }
+          },
+          [length]: 4
+        ]
+      },
+      [length]: 4
+    ]
+  },
+  [length]: 1
+]

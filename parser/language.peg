@@ -1,0 +1,289 @@
+start = ProgramStart
+
+ProgramStart = res:(SpaceOrNot c:Class SpaceOrNot { return c })*
+
+// Keywords -------------------------------------------------------------
+ClassKeyword = "class"
+FunctionKeyword = "func"
+// ----------------------------------------------------------------------
+
+// Primitive Type Keywords ----------------------------------------------
+NumberKeyword = "number"
+StringKeyword = "string"
+BooleanKeyword = "boolean"
+// ----------------------------------------------------------------------
+
+// Constants ------------------------------------------------------------
+OpenCurly = [{]
+CloseCurly = [}]
+OpenParen = [(]
+CloseParen = [)]
+Equals = [=]
+SemiColon = [;]
+SingleQuote = "'"
+DoubleQuote = '"'
+DecimalPoint = "."
+Period = "."
+Comma = ","
+NegativeSign = "-"
+// ----------------------------------------------------------------------
+
+// Basic ----------------------------------------------------------------
+Word = w:[a-zA-Z]+ { return w.join("") }
+ValidString = s:[^"']* { return s.join("") }
+Digits = [0-9]+
+WordOrDigit = Word / Digits
+Space = [" "]+
+SpaceOrNot = [" """\n\t\r]*
+_ "whitespace"
+  = [ \t\n\r]*
+// ----------------------------------------------------------------------
+
+// Common Patterns ------------------------------------------------------
+ArgumentsIn = SpaceOrNot arg:(FuncCall / Instantiate / String / Variable / Number) SpaceOrNot more:(Comma ai:ArgumentsIn { return ai; })*
+{
+    let args = [arg];
+    args = args.concat(more[0] ? more[0].args : []);
+    args = args.map(a => a['type'] ? a : ((a.tokenType == "FuncCall" || a.tokenType == "Instantiate" || a.tokenType == "Variable") ? a : { type: 'identifier', value: a }));
+    return {
+        tokenType: "ArgumentsIn",
+        args: args
+    }
+}
+ArgumentsDefine = SpaceOrNot type:Word Space arg:Word SpaceOrNot more:(Comma ad:ArgumentsDefine { return ad; })*
+{
+    let args = [{
+        type: type,
+        identifier: arg
+    }];
+    args = args.concat(more[0] ? more[0].args : []);
+    return {
+        tokenType: "ArgumentsDefine",
+        args: args
+    }
+}
+Constructor = SpaceOrNot "constructor" OpenParen SpaceOrNot ad:ArgumentsDefine? SpaceOrNot CloseParen SpaceOrNot OpenCurly SpaceOrNot within:WithinFunction SpaceOrNot CloseCurly {
+	return {
+    	tokenType: "Constructor",
+        args: ad,
+        within: within
+	}
+}
+// ----------------------------------------------------------------------
+
+// Statements
+DefinitionKeywords = NumberKeyword / StringKeyword
+IfBlock = SpaceOrNot "if" SpaceOrNot OpenParen ex:BooleanExpression CloseParen SpaceOrNot OpenCurly SpaceOrNot wIf:WithinIf SpaceOrNot CloseCurly 
+elseIfs:(SpaceOrNot "elif" SpaceOrNot OpenParen elifEx:BooleanExpression CloseParen SpaceOrNot OpenCurly SpaceOrNot wElif:WithinIf SpaceOrNot CloseCurly
+{ return { tokenType: "ElifBlock", expression: elifEx, within: wElif }})*
+elseBlock:(SpaceOrNot "else" SpaceOrNot SpaceOrNot OpenCurly SpaceOrNot wElse:WithinIf SpaceOrNot CloseCurly
+{ return { tokenType: "ElseBlock", within: wElse }})?
+{
+    return {
+        tokenType: "IfBlock",
+        ifBlock: {
+            expression: ex,
+            within: wIf
+        },
+        elifBlocks: elseIfs,
+        elseBlock: elseBlock
+    }
+}
+Comment = SpaceOrNot "//" SpaceOrNot c:[^("\n")]* SpaceOrNot { return { tokenType: "Comment", comment: c.join("") } }
+WhileLoop = SpaceOrNot "while" SpaceOrNot OpenParen ex:BooleanExpression CloseParen SpaceOrNot OpenCurly SpaceOrNot wWLoop:WithinLoop SpaceOrNot CloseCurly
+{ return { tokenType: "WhileLoop", expression: ex, within: wWLoop } }
+
+Definition = type:Word Space identifier:Word Space? res:(Equals Space? ex:Expression { return ex })? SemiColon
+{
+    return {
+        tokenType: "Definition",
+		type: type,
+        identifier: identifier.trim(),
+        equals: res
+    }
+}
+Reassignment = variable:Variable Space? Equals Space? ex:Expression SemiColon
+{
+    return {
+        tokenType: "Reassignment",
+        variable: variable,
+        equals: ex
+    }
+}
+Return = SpaceOrNot "return" val:(SemiColon {return null} / Space ex:Expression? SpaceOrNot SemiColon{return ex})
+{
+    return {
+        tokenType: "Return",
+        value: val
+    }
+}
+Break = SpaceOrNot "break" SpaceOrNot SemiColon
+{
+    return {
+        tokenType: "Break"
+    }
+}
+Instantiate = SpaceOrNot "new" Space className:Word OpenParen args:ArgumentsIn? CloseParen
+{
+    return {
+        tokenType: "Instantiate",
+        className: className,
+        args: args
+    }
+}
+Variable = s:ScopeSpec? w:Word
+{
+    return {
+        tokenType: "Variable",
+        scope: s,
+        variableName: w
+    }
+}
+ScopeSpec = SpaceOrNot w:Word Period more:(s2:ScopeSpec { return s2 })*
+{
+    let specs = [w];
+    specs = specs.concat(more[0] ? more[0].scope : []);
+    return {
+        tokenType: "ScopeSpec",
+        scope: specs.join(".")
+    }
+}
+// ----------------------------------------------------------------------
+
+// Basic Primitives -----------------------------------------------------
+String = 
+DoubleQuote SpaceOrNot v:ValidString SpaceOrNot DoubleQuote { return { tokenType: "Primitive", type: "string", value: v } }
+/ SingleQuote SpaceOrNot v:ValidString SpaceOrNot SingleQuote { return { tokenType: "Primitive", type: "string", value: v } }
+Number
+  = _? neg:NegativeSign? n:([0-9]+) extra:(dp:DecimalPoint dec:[0-9]+ { return dp + dec.join("") })?
+  { return { tokenType: "Primitive", type: "number", value: parseFloat((neg ? neg : "") + n.join("") + (extra ? extra : "")) } }
+Boolean = SpaceOrNot b:("true" / "false") SpaceOrNot { return { tokenType: "Primitive", type: "boolean", value: b == "true" ? true : false } }
+// ----------------------------------------------------------------------
+
+// Arithmetic -----------------------------------------------------------
+ArithmeticExpression
+  = head:Term tail:(_ ("+" / "-") _ Term)* {
+      let x = tail.map(val => val);
+      if(head.head && tail[0] && tail[0].length < 4){
+          return head.head
+      }
+      if(!tail[0] || !tail[0][3]){
+          return head
+      }
+      return {
+      	  tokenType: "ArithmeticExpression",
+          left: head,
+          right: tail.map((val) => { return { tokenType: "ArithmeticOperation", op: val[1], value: val[3] } })
+      }
+  }
+
+Term
+  = head:Factor tail:(_ ("*" / "/" / "%") _ Factor)* {
+      let x = tail.map(val => val);
+      if(head.head && tail[0] && tail[0].length < 4){
+          return head.head
+      }
+      if(!tail[0] || !tail[0][3]){
+          return head
+      }
+      return {
+          tokenType: "ArithmeticExpression",
+          left: head,
+          right: tail.map(val => { return { op: val[1], value: val[3] } })
+      }
+  }
+
+Factor
+  = "(" _ expr:ArithmeticExpression _ ")" { return expr; }
+  / _? f: FuncCall { return f }
+  / _? n: Number { return n }
+  / _? v: Variable { return v }
+// ----------------------------------------------------------------------
+
+// Calls and Scopes -----------------------------------------------------
+
+FuncCall = s:ScopeSpec? func:Word OpenParen args:ArgumentsIn? CloseParen 
+{
+    return { 
+        tokenType: "FuncCall",
+        functionName: func,
+        args: args,
+        scope: s
+    }
+}
+// ----------------------------------------------------------------------
+
+// Boolean --------------------------------------------------------------
+BoolOperator = ("<=" / ">=" / "<" / ">" / "==" / "!-")
+BooleanExpression
+ = ((SpaceOrNot e:Expression SpaceOrNot op:BoolOperator SpaceOrNot e2:Expression SpaceOrNot
+ {
+ 	return {
+    	tokenType: "BooleanExpression",
+        op: op,
+    	left: e,
+        right: e2
+    }
+ }))
+// ----------------------------------------------------------------------
+
+Expression = SpaceOrNot res:(
+s:String { return s }
+/ b:Boolean { return b }
+/ n:Number { return n }
+/ i:Instantiate { return i }
+/ ae:ArithmeticExpression { return ae }
+/ v:Variable SpaceOrNot { return v }
+/ f:FuncCall { return f }
+/ OpenParen ex:Expression CloseParen { return ex }) SpaceOrNot { return res }
+
+
+// Structures
+Class = ClassKeyword Space cn:Word Space OpenCurly SpaceOrNot wc:WithinClass SpaceOrNot EndBlock
+{
+	return {
+    	tokenType: "Class",
+		className: cn.trim(),
+        within: wc
+	};
+}
+WithinClass = ((c: Comment { return c }) / (f: Function SpaceOrNot {return f}) / (d:Definition SpaceOrNot { return d }) / (c: Constructor SpaceOrNot { return c }))*
+
+Function 
+= FunctionKeyword Space fName:Word OpenParen args:ArgumentsDefine? CloseParen SpaceOrNot OpenCurly SpaceOrNot wF: WithinFunction SpaceOrNot EndBlock
+{
+    if(!wF.find(val => val.tokenType == "Return")){
+        wF.push({ tokenType: "Return", value: null });
+    }
+	return {
+    	tokenType: "Function",
+        funcName: fName.trim(),
+        args: args,
+        within: wF
+    }
+}
+WithinFunction = (
+(c: Comment { return c })
+/ (r:Return{ return r })
+/ (d:Definition SpaceOrNot { return d }) 
+/ (wL:WhileLoop SpaceOrNot { return wL })
+/ (ifS:IfBlock SpaceOrNot { return ifS })
+/ (r:Reassignment SpaceOrNot { return r })
+/ (e:Expression SpaceOrNot SemiColon SpaceOrNot { return e })
+)*
+
+WithinIf = WithinFunction
+
+WithinLoop = (
+(c: Comment { return c })
+/ (r:Return{ return r })
+/ (d:Definition SpaceOrNot { return d }) 
+/ (wL:WhileLoop SpaceOrNot { return wL })
+/ (b:Break { return b })
+/ (ifS:IfBlock SpaceOrNot { return ifS })
+/ (r:Reassignment SpaceOrNot { return r })
+/ (e:Expression SpaceOrNot SemiColon SpaceOrNot { return e })
+)*
+
+
+EndBlock = CloseCurly
