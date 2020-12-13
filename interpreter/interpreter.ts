@@ -1,6 +1,7 @@
 import { argv } from 'process';
 import { inspect, isObject } from 'util';
 import { ArgDef, ArgsDefine, ArgsIn, ArithmeticExpression, ArithmeticOperation, BooleanExpression, Break, Class, Comment, Definition, Expression, Func, FuncCall, IfBlock, Instantiate, Primitives, Program, Reassignment, Return, Scope, ScopeSpec, Token, Tokens, ValueType, Variable, WhileLoop, Instance, Constructor, ArithmeticOperator, Value } from '../parser/program';
+import { sendMsg } from './messageReducer';
 
 // Interpreter State
 type IS = {
@@ -632,7 +633,7 @@ function evalFuncCall(ast: FuncCall, state: IS): [Primitives | Instance, IS] {
         for (let arg of ast.args.args) {
           let [innerVal, newStateLog] = evalAST(arg, newState);
           newState = newStateLog;
-          console.log(innerVal);
+          sendMsg({ tag: 'log', content: innerVal });
         }
       }
       return [undefined, newState];
@@ -681,19 +682,21 @@ function evalFunction(ast: Func, argsIn: ArgsIn | undefined, state: IS): [Primit
     argsVals.push(val);
   }
   newState = safeIncStackPointer(newState);
-  ast.args ? ast.args.args.forEach((argdef, ind) => {
-    if (isInstance(argsVals[ind])) {
-      let instVal = (newState.heap.get((argsVals[ind] as Instance).pointer) as Value);
-      instVal.numLiveReferences++;
-      newState.stack[newState.stackPointer].set(argdef.identifier, instVal);
-    } else {
-      newState.stack[newState.stackPointer].set(argdef.identifier, {
-        value: argsVals[ind], typeStr: getTypeStr(argsVals[ind]),
-        numLiveReferences: 1, type: getType(argsVals[ind]),
-        token: Tokens.Value
-      });
-    }
-  }) : undefined;
+  if (ast.args) {
+    ast.args.args.forEach((argdef, ind) => {
+      if (isInstance(argsVals[ind])) {
+        let instVal = (newState.heap.get((argsVals[ind] as Instance).pointer) as Value);
+        instVal.numLiveReferences++;
+        newState.stack[newState.stackPointer].set(argdef.identifier, instVal);
+      } else {
+        newState.stack[newState.stackPointer].set(argdef.identifier, {
+          value: argsVals[ind], typeStr: getTypeStr(argsVals[ind]),
+          numLiveReferences: 1, type: getType(argsVals[ind]),
+          token: Tokens.Value
+        });
+      }
+    });
+  }
   let returnVal = undefined;
   for (let wi of ast.within) {
     if (wi.token == Tokens.Return) {
@@ -728,19 +731,21 @@ function evalConstructor(ast: Constructor, instance: Instance, argsIn: ArgsIn | 
   }
   // console.log("CONSTRUCTOR: " + ast.parent.name + " with args: " + argsVals);
   newState = safeIncStackPointer(newState);
-  ast.args ? ast.args.args.forEach((argdef, ind) => {
-    if (isInstance(argsVals[ind])) {
-      let instVal = (newState.heap.get((argsVals[ind] as Instance).pointer) as Value);
-      instVal.numLiveReferences++;
-      newState.stack[newState.stackPointer].set(argdef.identifier, instVal);
-    } else {
-      newState.stack[newState.stackPointer].set(argdef.identifier, {
-        value: argsVals[ind], typeStr: getTypeStr(argsVals[ind]),
-        numLiveReferences: 1, type: getType(argsVals[ind]),
-        token: Tokens.Value
-      });
-    }
-  }) : undefined;
+  if (ast.args) {
+    ast.args.args.forEach((argdef, ind) => {
+      if (isInstance(argsVals[ind])) {
+        let instVal = (newState.heap.get((argsVals[ind] as Instance).pointer) as Value);
+        instVal.numLiveReferences++;
+        newState.stack[newState.stackPointer].set(argdef.identifier, instVal);
+      } else {
+        newState.stack[newState.stackPointer].set(argdef.identifier, {
+          value: argsVals[ind], typeStr: getTypeStr(argsVals[ind]),
+          numLiveReferences: 1, type: getType(argsVals[ind]),
+          token: Tokens.Value
+        });
+      }
+    });
+  }
   let lastInstance = newState.runningInstance;
   newState.runningInstance = instance;
   ast.within.forEach(wi => {
