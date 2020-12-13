@@ -375,8 +375,8 @@ module.exports = /*
         peg$c123 = peg$literalExpectation(">", false),
         peg$c124 = "==",
         peg$c125 = peg$literalExpectation("==", false),
-        peg$c126 = "!-",
-        peg$c127 = peg$literalExpectation("!-", false),
+        peg$c126 = "!=",
+        peg$c127 = peg$literalExpectation("!=", false),
         peg$c128 = function(e, op, e2) {
          	return {
             	tokenType: "BooleanExpression",
