@@ -158,12 +158,14 @@ function setVariableValue(variable: Variable, value: Value, state: IS): [boolean
     let varPointer = newState.runningInstance.globalScope.get(variable.variableName);
     let hVal = varPointer ? newState.heap.get(varPointer) : undefined;
     if (!isNullOrUndef(hVal)) {
-      if (isInstance((hVal as Value).value)) {
-        let inst: Instance = (hVal as Value).value as Instance;
-        newState.runningInstance.globalScope.set(variable.variableName, varPointer as string);
+      if (isOnHeap(value)) {
+        newState.runningInstance.globalScope.set(variable.variableName, value.heapPtr as string);
         return [true, newState];
       } else {
-        newState.runningInstance.globalScope.set(variable.variableName, varPointer as string);
+        newState.runningInstance.globalScope.set(variable.variableName, String(id));
+        value.heapPtr = String(id);
+        newState.heap.set(String(id), value);
+        id++;
         return [true, newState];
       }
     }
@@ -196,9 +198,14 @@ function setVariableValue(variable: Variable, value: Value, state: IS): [boolean
         if (hVal?.typeStr != value.typeStr || hVal == undefined) {
           throw new Error("Attempted to assign value of type " + value.typeStr + " to a value of type " + hVal?.typeStr);
         }
-        (lastInstance as Instance).globalScope.set(variable.variableName, String(id));
-        value.heapPtr = String(id);
-        newState.heap.set(String(id), value);
+        if (isOnHeap(value)) {
+          (lastInstance as Instance).globalScope.set(variable.variableName, value.heapPtr as string);
+        } else {
+          (lastInstance as Instance).globalScope.set(variable.variableName, String(id));
+          value.heapPtr = String(id);
+          newState.heap.set(String(id), value);
+          id++;
+        }
         return [true, newState];
       } else {
         let instVal: Instance;

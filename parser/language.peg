@@ -1,6 +1,6 @@
 start = ProgramStart
 
-ProgramStart = res:(SpaceOrNot c:Class SpaceOrNot { return c })*
+ProgramStart = res:((SpaceOrNot c:Class SpaceOrNot { return c }) / (SpaceOrNot com:Comment SpaceOrNot { return com } ))*
 
 // Keywords -------------------------------------------------------------
 ClassKeyword = "class"
@@ -21,7 +21,7 @@ CloseParen = [)]
 Equals = [=]
 SemiColon = [;]
 SingleQuote = "'"
-DoubleQuote = "\""
+DoubleQuote = '"'
 DecimalPoint = "."
 Period = "."
 Comma = ","
@@ -40,11 +40,11 @@ _ "whitespace"
 // ----------------------------------------------------------------------
 
 // Common Patterns ------------------------------------------------------
-ArgumentsIn = SpaceOrNot arg:(FuncCall / Instantiate / String / Variable / Number) SpaceOrNot more:(Comma ai:ArgumentsIn { return ai; })*
+ArgumentsIn = SpaceOrNot arg:(Expression) SpaceOrNot more:(Comma ai:ArgumentsIn { return ai; })*
 {
     let args = [arg];
     args = args.concat(more[0] ? more[0].args : []);
-    args = args.map(a => a['type'] ? a : ((a.tokenType == "FuncCall" || a.tokenType == "Instantiate" || a.tokenType == "Variable") ? a : { type: 'identifier', value: a }));
+    args = args.map(a => a);
     return {
         tokenType: "ArgumentsIn",
         args: args
@@ -214,7 +214,7 @@ FuncCall = s:ScopeSpec? func:Word OpenParen args:ArgumentsIn? CloseParen
 // ----------------------------------------------------------------------
 
 // Boolean --------------------------------------------------------------
-BoolOperator = ("<=" / ">=" / "<" / ">" / "==" / "!=")
+BoolOperator = ("<=" / ">=" / "<" / ">" / "==" / "!-")
 BooleanExpression
  = ((SpaceOrNot e:Expression SpaceOrNot op:BoolOperator SpaceOrNot e2:Expression SpaceOrNot
  {

@@ -8,7 +8,7 @@ function isNullOrUndef(val: any) {
 export function convertToProgram(ast: any, additionalData?: any): Program {
   let prog: Program = {
     token: Tokens.Program,
-    classes: ast.map((c: Token) => convertAST(c, additionalData))
+    classes: ast.map((c: Token) => convertAST(c, additionalData)).filter((c: Token) => c.token != Tokens.Comment)
   };
   return prog;
 }
