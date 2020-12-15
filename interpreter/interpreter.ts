@@ -5,7 +5,7 @@ import { sendMsg } from './messageReducer';
 
 // Interpreter State
 type IS = {
-  heap: Map<string, Value>,
+  heap: HeapWrapper<string, Value>,
   stack: Map<string, Value>[],
   stackPointer: number,
   runningInstance: Instance,
@@ -17,6 +17,28 @@ type BreakException = {
   state: IS
 };
 
+class HeapWrapper<T, S> {
+
+  private heap = new Map<T, S>();
+
+  public get(key: T): S | undefined {
+    return this.heap.get(key);
+  }
+
+  public set(key: T, val: S) {
+    console.log("Set " + key + " to " + (isInstance((val as any)['value']) ? (val as unknown as Instance) : (val as any)['value']));
+    if (isInstance((val as any)['value'])) {
+      console.log(val);
+    }
+    return this.heap.set(key, val);
+  }
+
+  public delete(key: T): boolean {
+    return this.heap.delete(key);
+  }
+
+}
+
 var id = 0;
 
 function isValue(obj: any) {
@@ -24,6 +46,7 @@ function isValue(obj: any) {
 }
 
 function allocateInstance(clazz: Class, argsIn: ArgsIn | undefined, state: IS): [Instance, IS] {
+  id++;
   let inst: Instance = {
     token: Tokens.Instance,
     type: clazz.name,
@@ -37,23 +60,23 @@ function allocateInstance(clazz: Class, argsIn: ArgsIn | undefined, state: IS): 
   newState = safeIncStackPointer(newState);
   newState.heap.set(inst.pointer, { value: inst, typeStr: getTypeStr(inst), numLiveReferences: 1, token: Tokens.Value, type: ValueType.Instance, heapPtr: inst.pointer });
   clazz.globalVars.forEach(gd => {
-    id++;
     let [globVal, newState2] = evalDefinition(gd, newState, true);
     newState = newState2;
     if (isValue(globVal)) {
-      if (isInstance(globVal)) {
-        let inst = (newState.heap.get((globVal as Instance).pointer) as Value);
-        newState.heap.set(String(id), inst);
-      } else {
-        newState.heap.set(String(id), {
-          value: globVal, typeStr: gd.type,
-          numLiveReferences: 1,
-          type: getType(globVal),
-          token: Tokens.Value,
-          heapPtr: String(id)
-        });
-      }
-      newState.runningInstance.globalScope.set(gd.identifier, String(id));
+      // if (isInstance(globVal)) {
+      //   let inst = (newState.heap.get((globVal as Instance).pointer) as Value);
+      //   newState.runningInstance.globalScope.set(gd.identifier, (inst.heapPtr as string));
+      // } else {
+      //   id++;
+      //   newState.heap.set(String(id), {
+      //     value: globVal, typeStr: gd.type,
+      //     numLiveReferences: 1,
+      //     type: getType(globVal),
+      //     token: Tokens.Value,
+      //     heapPtr: String(id)
+      //   });
+      //   newState.runningInstance.globalScope.set(gd.identifier, String(id));
+      // }
     } else {
       throw new Error("Invalid value to set global variable " + gd.identifier + " to!");
     }
@@ -61,17 +84,16 @@ function allocateInstance(clazz: Class, argsIn: ArgsIn | undefined, state: IS): 
   newState = safeDecStackPointer(newState);
   newState.runningInstance = lastInstance;
   [, newState] = evalConstructor(clazz.construct, inst, argsIn, newState);
-  id++;
   return [inst, newState];
 }
 
 function variableValue(variable: Variable, state: IS): Value {
   if (isNullOrUndef(variable.scope) || variable.scope?.scope.length == 0) {
     let fVal = state.stack[state.stackPointer].get(variable.variableName);
-    if (!isNullOrUndef(fVal)) return fVal as Value;
+    if (fVal != undefined) return fVal as Value;
     let varPointer = state.runningInstance.globalScope.get(variable.variableName);
     let hVal = varPointer ? state.heap.get(varPointer) : undefined;
-    if (!isNullOrUndef(hVal)) return hVal as Value;
+    if (hVal != undefined) return hVal as Value;
     throw new Error("Could not find variable: " + variable.variableName);
   } else {
     variable.scope = variable.scope as ScopeSpec;
@@ -80,10 +102,10 @@ function variableValue(variable: Variable, state: IS): Value {
       if (i == 0) {
         let instVal: Instance;
         let fVal = state.stack[state.stackPointer].get(variable.scope.scope[i]);
-        if (isNullOrUndef(fVal)) {
+        if (fVal == undefined) {
           let varPointer = state.runningInstance.globalScope.get(variable.scope.scope[i]);
           let hVal = varPointer ? state.heap.get(varPointer) : undefined;
-          if (isNullOrUndef(hVal)) throw new Error("Couldn't find variable " + variable.variableName + " at " + variable.scope.scope.join(".") + "!");
+          if (hVal == undefined) throw new Error("Couldn't find variable " + variable.variableName + " at " + variable.scope.scope.join(".") + "!");
           instVal = assertIsInstance(hVal as Value, variable, i);;
         } else {
           instVal = assertIsInstance(fVal as Value, variable, i);;
@@ -98,7 +120,7 @@ function variableValue(variable: Variable, state: IS): Value {
         let varPointer = lastInstance.globalScope.get(variable.variableName);
         let hVal = varPointer ? state.heap.get(varPointer) : undefined;
 
-        if (isNullOrUndef(hVal)) throw new Error("Couldn't find variable at " + variable.scope.scope.join(".") + "!");
+        if (hVal == undefined) throw new Error("Couldn't find variable at " + variable.scope.scope.join(".") + "!");
         instVal = hVal;
         return instVal as Value;
       } else {
@@ -106,7 +128,7 @@ function variableValue(variable: Variable, state: IS): Value {
         let instVal: Instance | undefined;
         let varPointer = lastInstance.globalScope.get(variable.scope.scope[i]);
         let hVal = varPointer ? state.heap.get(varPointer) : undefined;
-        if (isNullOrUndef(hVal)) throw new Error("Couldn't find variable at " + variable.scope.scope.join(".") + "!");
+        if (hVal == undefined) throw new Error("Couldn't find variable at " + variable.scope.scope.join(".") + "!");
         instVal = assertIsInstance(hVal as Value, variable, i);;
         if (i == variable.scope.scope.length && instVal.token != Tokens.Instance) {
           throw new Error("Couldn't find variable at " + variable.scope.scope.join(".") + "!");
@@ -147,26 +169,32 @@ function assertIsInstance(inst: Value, variable: Variable, i?: number): Instance
   return inst.value as Instance;
 }
 
-function setVariableValue(variable: Variable, value: Value, state: IS): [boolean, IS] {
+function setVariableValue(variable: Variable, value: Value, state: IS, onHeap?: boolean): [boolean, IS] {
+  let checkF = onHeap == undefined ? true : !onHeap;
+  let checkH = onHeap == undefined ? true : onHeap;
   if (isNullOrUndef(variable.scope) || variable.scope?.scope.length == 0) {
     let newState = state;
-    let fVal = newState.stack[newState.stackPointer].get(variable.variableName);
-    if (!isNullOrUndef(fVal)) {
-      newState.stack[newState.stackPointer].set(variable.variableName, value);
-      return [true, newState];
+    if (checkF) {
+      let fVal = newState.stack[newState.stackPointer].get(variable.variableName);
+      if (!isNullOrUndef(fVal)) {
+        newState.stack[newState.stackPointer].set(variable.variableName, value);
+        return [true, newState];
+      }
     }
-    let varPointer = newState.runningInstance.globalScope.get(variable.variableName);
-    let hVal = varPointer ? newState.heap.get(varPointer) : undefined;
-    if (!isNullOrUndef(hVal)) {
-      if (isOnHeap(value)) {
-        newState.runningInstance.globalScope.set(variable.variableName, value.heapPtr as string);
-        return [true, newState];
-      } else {
-        newState.runningInstance.globalScope.set(variable.variableName, String(id));
-        value.heapPtr = String(id);
-        newState.heap.set(String(id), value);
-        id++;
-        return [true, newState];
+    if (checkH) {
+      let varPointer = newState.runningInstance.globalScope.get(variable.variableName);
+      let hVal = varPointer ? newState.heap.get(varPointer) : undefined;
+      if (!isNullOrUndef(hVal)) {
+        if (isOnHeap(value)) {
+          newState.runningInstance.globalScope.set(variable.variableName, value.heapPtr as string);
+          return [true, newState];
+        } else {
+          id++;
+          newState.runningInstance.globalScope.set(variable.variableName, String(id));
+          value.heapPtr = String(id);
+          newState.heap.set(String(id), value);
+          return [true, newState];
+        }
       }
     }
     newState.stack[newState.stackPointer].set(variable.variableName, value);
@@ -177,10 +205,10 @@ function setVariableValue(variable: Variable, value: Value, state: IS): [boolean
     for (let i = 0; i < variable.scope.scope.length + 1; i++) {
       if (i == 0) {
         let instVal: Instance;
-        let fVal = state.stack[state.stackPointer].get(variable.scope.scope[i]);
+        let fVal = checkF ? state.stack[state.stackPointer].get(variable.scope.scope[i]) : undefined;
         if (isNullOrUndef(fVal)) {
           let varPointer = state.runningInstance.globalScope.get(variable.scope.scope[i]);
-          let hVal = varPointer ? state.heap.get(varPointer) : undefined;
+          let hVal = checkH ? (varPointer ? state.heap.get(varPointer) : undefined) : undefined;
           if (isNullOrUndef(hVal)) throw new Error("Couldn't find variable at " + variable.scope.scope.join(".") + "!");
           instVal = assertIsInstance(hVal as Value, variable, i);;
         } else {
@@ -192,7 +220,7 @@ function setVariableValue(variable: Variable, value: Value, state: IS): [boolean
         lastInstance = instVal;
       } else if (i == variable.scope.scope.length) {
         let varPointer = (lastInstance as Instance).globalScope.get(variable.variableName);
-        let hVal = varPointer ? state.heap.get(varPointer) : undefined;
+        let hVal = checkH ? (varPointer ? state.heap.get(varPointer) : undefined) : undefined;
         if (isNullOrUndef(hVal)) throw new Error("Couldn't find variable at " + variable.scope.scope.join(".") + "!");
         let newState = state;
         if (hVal?.typeStr != value.typeStr || hVal == undefined) {
@@ -201,10 +229,10 @@ function setVariableValue(variable: Variable, value: Value, state: IS): [boolean
         if (isOnHeap(value)) {
           (lastInstance as Instance).globalScope.set(variable.variableName, value.heapPtr as string);
         } else {
+          id++;
           (lastInstance as Instance).globalScope.set(variable.variableName, String(id));
           value.heapPtr = String(id);
           newState.heap.set(String(id), value);
-          id++;
         }
         return [true, newState];
       } else {
@@ -239,7 +267,7 @@ export function evalProgram(ast: Program): IS {
   }
   mainFunc = mainFunc as Func;
   let interpState: IS = {
-    heap: new Map(), stack: [new Map(), new Map()], runningInstance: (undefined as unknown as Instance), classes: new Map(),
+    heap: new HeapWrapper(), stack: [new Map(), new Map()], runningInstance: (undefined as unknown as Instance), classes: new Map(),
     functions: new Map(), stackPointer: 0
   };
   ast.classes.forEach(cla => {
@@ -253,7 +281,7 @@ export function evalProgram(ast: Program): IS {
   });
   let [mainInstance, newState2] = allocateInstance(mainClass, undefined, interpState);
   newState2.runningInstance = mainInstance;
-  let [, newState3] = evalFunction(mainFunc, undefined, newState2);
+  let [, newState3] = evalFunction(mainFunc, [], newState2);
   return newState3;
 }
 
@@ -624,16 +652,25 @@ function clearStack(state: IS): IS {
 }
 
 function evalFuncCall(ast: FuncCall, state: IS): [Primitives | Instance, IS] {
+  let newState = state;
+  let argsArray = ast.args ? ast.args.args : [];
+  if (argsArray.length != (ast.args ? ast.args.args.length : 0)) {
+    throw new Error("Too many or too few arguments passed to function call!");
+  }
+  let argsVals: (Primitives | Instance)[] = [];
+  for (let arg of argsArray) {
+    let [val, newState2] = evalExpression(arg, newState);
+    newState = newState2;
+    argsVals.push(val);
+  }
   // console.log("FUNC CALL: " + ast.functionName);
   if (isNullOrUndef(ast.scope) || ast.scope?.scope.length == 0) {
     let currentClass = state.runningInstance.class;
-    let newState = state;
     let nextFunc = state.functions.get(currentClass)?.get(ast.functionName);
-    let [funcVal, newState2] = evalFunction(nextFunc ? nextFunc : (() => { throw new Error("No function with name: " + ast.functionName + "!"); })(), ast.args, newState);
+    let [funcVal, newState2] = evalFunction(nextFunc ? nextFunc : (() => { throw new Error("No function with name: " + ast.functionName + "!"); })(), argsVals, newState);
     return [funcVal, newState2];
   } else {
     ast.scope = ast.scope as ScopeSpec;
-    let newState = state;
     // console.log check -------------------------------------------------------
     if (ast.scope.scope.length == 1 && ast.scope.scope[0] == "console" && ast.functionName == "log") {
       if (ast.args) {
@@ -668,26 +705,16 @@ function evalFuncCall(ast: FuncCall, state: IS): [Primitives | Instance, IS] {
     newState.runningInstance = calledInst;
     let func = newState.functions.get(calledInst.class)?.get(ast.functionName);
     if (isNullOrUndef(func)) {
-      throw new Error("Function could not be found at: " + ast.scope?.scope.join("."));
+      throw new Error("Function " + ast.functionName + " could not be found at: " + ast.scope?.scope.join("."));
     }
-    let [funcVal, newState2] = evalFunction((func as Func), ast.args, newState);
+    let [funcVal, newState2] = evalFunction((func as Func), argsVals, newState);
     newState2.runningInstance = lastInstance;
     return [funcVal, newState2];
   }
 }
 
-function evalFunction(ast: Func, argsIn: ArgsIn | undefined, state: IS): [Primitives | Instance, IS] {
+function evalFunction(ast: Func, argsVals: (Primitives | Instance)[], state: IS): [Primitives | Instance, IS] {
   let newState = state;
-  let argsArray = argsIn ? argsIn.args : [];
-  if (argsArray.length != (ast.args ? ast.args.args.length : 0)) {
-    throw new Error("Too many or too few arguments passed to function call!");
-  }
-  let argsVals: (Primitives | Instance)[] = [];
-  for (let arg of argsArray) {
-    let [val, newState2] = evalExpression(arg, newState);
-    newState = newState2;
-    argsVals.push(val);
-  }
   newState = safeIncStackPointer(newState);
   if (ast.args) {
     ast.args.args.forEach((argdef, ind) => {
@@ -852,7 +879,7 @@ function evalDefinition(ast: Definition, state: IS, isGlobal?: boolean): [Primit
     if (isGlobal) {
       newState.runningInstance.globalScope.set(ast.identifier, expVal.pointer);
     } else {
-      [, newState] = setVariableValue(newVariable, heapVal, newState);
+      [, newState] = setVariableValue(newVariable, heapVal, newState, false);
     }
     return [expVal, newState];
   }
@@ -869,7 +896,7 @@ function evalDefinition(ast: Definition, state: IS, isGlobal?: boolean): [Primit
       value: expVal, typeStr: ast.type,
       numLiveReferences: 1, type: getType(expVal),
       token: Tokens.Value
-    }, newState);
+    }, newState, false);
   }
   return [expVal, newState];
 }
