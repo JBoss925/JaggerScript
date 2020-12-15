@@ -29,7 +29,7 @@ NegativeSign = "-"
 // ----------------------------------------------------------------------
 
 // Basic ----------------------------------------------------------------
-Word = w:[a-zA-Z]+ { return w.join("") }
+Word = w:[a-zA-Z_$0-9]+ { return w.join("") }
 ValidString = s:[^"']* { return s.join("") }
 Digits = [0-9]+
 WordOrDigit = Word / Digits
