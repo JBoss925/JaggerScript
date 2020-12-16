@@ -1,66 +1,104 @@
 [
   {
+    tokenType: 'Comment',
+    comment: 'In this example, we create a DoublyLinkedList object'
+  },
+  {
+    tokenType: 'Comment',
+    comment: 'which we can add numbers to in order to access them'
+  },
+  {
+    tokenType: 'Comment',
+    comment: 'later and remove them when necessary.'
+  },
+  {
     tokenType: 'Class',
-    className: 'BreakTest',
+    className: 'Main',
     within: [
-      {
-        tokenType: 'Constructor',
-        args: null,
-        within: [
-          {
-            tokenType: 'Comment',
-            comment: 'This is a program that tests loop breaks.'
-          },
-          {
-            tokenType: 'Comment',
-            comment: "When working, this should log '1' four times"
-          },
-          { tokenType: 'Comment', comment: 'in the console.' },
-          [length]: 3
-        ]
-      },
+      { tokenType: 'Constructor', args: null, within: [ [length]: 0 ] },
       {
         tokenType: 'Function',
         funcName: 'main',
         args: null,
         within: [
           {
-            tokenType: 'FuncCall',
-            functionName: 'test',
-            args: null,
-            scope: null
+            tokenType: 'Definition',
+            type: 'DoublyLinkedList',
+            identifier: 'list',
+            equals: {
+              tokenType: 'Instantiate',
+              className: 'DoublyLinkedList',
+              args: null
+            }
           },
-          { tokenType: 'Return', value: null },
-          [length]: 2
-        ]
-      },
-      {
-        tokenType: 'Function',
-        funcName: 'test',
-        args: null,
-        within: [
+          {
+            tokenType: 'FuncCall',
+            functionName: 'add',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'number', value: 7 },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'list' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'add',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'number', value: 12 },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'list' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'add',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'number', value: 8 },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'list' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'add',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'number', value: 42 },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'list' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'string',
+                  value: 'All elements:'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
           {
             tokenType: 'Definition',
             type: 'number',
             identifier: 'i',
-            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
-          },
-          {
-            tokenType: 'Definition',
-            type: 'number',
-            identifier: 'z',
-            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
-          },
-          {
-            tokenType: 'Definition',
-            type: 'number',
-            identifier: 'x',
-            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
-          },
-          {
-            tokenType: 'Definition',
-            type: 'number',
-            identifier: 'y',
             equals: { tokenType: 'Primitive', type: 'number', value: 0 }
           },
           {
@@ -69,99 +107,53 @@
               tokenType: 'BooleanExpression',
               op: '<',
               left: { tokenType: 'Variable', scope: null, variableName: 'i' },
-              right: { tokenType: 'Primitive', type: 'number', value: 1000 }
+              right: {
+                tokenType: 'Variable',
+                scope: { tokenType: 'ScopeSpec', scope: 'list' },
+                variableName: 'length'
+              }
             },
             within: [
               {
-                tokenType: 'WhileLoop',
-                expression: {
-                  tokenType: 'BooleanExpression',
-                  op: '<',
-                  left: {
-                    tokenType: 'Variable',
-                    scope: null,
-                    variableName: 'z'
-                  },
-                  right: {
-                    tokenType: 'Primitive',
-                    type: 'number',
-                    value: 1000
-                  }
+                tokenType: 'FuncCall',
+                functionName: 'log',
+                args: {
+                  tokenType: 'ArgumentsIn',
+                  args: [
+                    {
+                      tokenType: 'FuncCall',
+                      functionName: 'get',
+                      args: {
+                        tokenType: 'ArgumentsIn',
+                        args: [
+                          {
+                            tokenType: 'Variable',
+                            scope: null,
+                            variableName: 'i'
+                          },
+                          [length]: 1
+                        ]
+                      },
+                      scope: { tokenType: 'ScopeSpec', scope: 'list' }
+                    },
+                    [length]: 1
+                  ]
                 },
-                within: [
-                  {
-                    tokenType: 'Reassignment',
-                    variable: {
-                      tokenType: 'Variable',
-                      scope: null,
-                      variableName: 'x'
-                    },
-                    equals: {
-                      tokenType: 'ArithmeticExpression',
-                      left: {
-                        tokenType: 'Variable',
-                        scope: null,
-                        variableName: 'x'
-                      },
-                      right: [
-                        {
-                          tokenType: 'ArithmeticOperation',
-                          op: '+',
-                          value: {
-                            tokenType: 'Primitive',
-                            type: 'number',
-                            value: 1
-                          }
-                        },
-                        [length]: 1
-                      ]
-                    }
-                  },
-                  {
-                    tokenType: 'Reassignment',
-                    variable: {
-                      tokenType: 'Variable',
-                      scope: null,
-                      variableName: 'z'
-                    },
-                    equals: {
-                      tokenType: 'ArithmeticExpression',
-                      left: {
-                        tokenType: 'Variable',
-                        scope: null,
-                        variableName: 'z'
-                      },
-                      right: [
-                        {
-                          tokenType: 'ArithmeticOperation',
-                          op: '+',
-                          value: {
-                            tokenType: 'Primitive',
-                            type: 'number',
-                            value: 1
-                          }
-                        },
-                        [length]: 1
-                      ]
-                    }
-                  },
-                  { tokenType: 'Break' },
-                  [length]: 3
-                ]
+                scope: { tokenType: 'ScopeSpec', scope: 'console' }
               },
               {
                 tokenType: 'Reassignment',
                 variable: {
                   tokenType: 'Variable',
                   scope: null,
-                  variableName: 'y'
+                  variableName: 'i'
                 },
                 equals: {
                   tokenType: 'ArithmeticExpression',
                   left: {
                     tokenType: 'Variable',
                     scope: null,
-                    variableName: 'y'
+                    variableName: 'i'
                   },
                   right: [
                     {
@@ -175,6 +167,455 @@
                     },
                     [length]: 1
                   ]
+                }
+              },
+              [length]: 2
+            ]
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'string', value: '' },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'string',
+                  value: 'Got second element:'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'get',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Primitive',
+                        type: 'number',
+                        value: 1
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { tokenType: 'ScopeSpec', scope: 'list' }
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'string', value: '' },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'string',
+                  value: 'Removed third element:'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'remove',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Primitive',
+                        type: 'number',
+                        value: 2
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { tokenType: 'ScopeSpec', scope: 'list' }
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'string', value: '' },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'string',
+                  value: 'Removed first element:'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'remove',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Primitive',
+                        type: 'number',
+                        value: 0
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { tokenType: 'ScopeSpec', scope: 'list' }
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'string', value: '' },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'string',
+                  value: 'Final list length:'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Variable',
+                  scope: { tokenType: 'ScopeSpec', scope: 'list' },
+                  variableName: 'length'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          { tokenType: 'Return', value: null },
+          [length]: 21
+        ]
+      },
+      [length]: 2
+    ]
+  },
+  {
+    tokenType: 'Class',
+    className: 'DoublyLinkedList',
+    within: [
+      {
+        tokenType: 'Definition',
+        type: 'Node',
+        identifier: 'head',
+        equals: null
+      },
+      {
+        tokenType: 'Definition',
+        type: 'Node',
+        identifier: 'tail',
+        equals: null
+      },
+      {
+        tokenType: 'Definition',
+        type: 'number',
+        identifier: 'length',
+        equals: { tokenType: 'Primitive', type: 'number', value: 0 }
+      },
+      { tokenType: 'Constructor', args: null, within: [ [length]: 0 ] },
+      {
+        tokenType: 'Function',
+        funcName: 'add',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'number', identifier: 'value' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Definition',
+            type: 'Node',
+            identifier: 'newNode',
+            equals: {
+              tokenType: 'Instantiate',
+              className: 'Node',
+              args: {
+                tokenType: 'ArgumentsIn',
+                args: [
+                  {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'value'
+                  },
+                  [length]: 1
+                ]
+              }
+            }
+          },
+          {
+            tokenType: 'IfBlock',
+            ifBlock: {
+              expression: {
+                tokenType: 'BooleanExpression',
+                op: '==',
+                left: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'head'
+                },
+                right: {
+                  tokenType: 'Primitive',
+                  type: 'undefined',
+                  value: undefined
+                }
+              },
+              within: [
+                {
+                  tokenType: 'Reassignment',
+                  variable: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'head'
+                  },
+                  equals: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'newNode'
+                  }
+                },
+                {
+                  tokenType: 'Reassignment',
+                  variable: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'tail'
+                  },
+                  equals: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'head'
+                  }
+                },
+                [length]: 2
+              ]
+            },
+            elifBlocks: [ [length]: 0 ],
+            elseBlock: {
+              tokenType: 'ElseBlock',
+              within: [
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'linkNext',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'newNode'
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { tokenType: 'ScopeSpec', scope: 'tail' }
+                },
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'linkPrev',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'tail'
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { tokenType: 'ScopeSpec', scope: 'newNode' }
+                },
+                {
+                  tokenType: 'Reassignment',
+                  variable: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'tail'
+                  },
+                  equals: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'newNode'
+                  }
+                },
+                [length]: 3
+              ]
+            }
+          },
+          {
+            tokenType: 'Reassignment',
+            variable: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'length'
+            },
+            equals: {
+              tokenType: 'ArithmeticExpression',
+              left: {
+                tokenType: 'Variable',
+                scope: null,
+                variableName: 'length'
+              },
+              right: [
+                {
+                  tokenType: 'ArithmeticOperation',
+                  op: '+',
+                  value: { tokenType: 'Primitive', type: 'number', value: 1 }
+                },
+                [length]: 1
+              ]
+            }
+          },
+          { tokenType: 'Return', value: null },
+          [length]: 4
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'getNode',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'number', identifier: 'index' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Definition',
+            type: 'Node',
+            identifier: 'nextNode',
+            equals: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'head'
+            }
+          },
+          {
+            tokenType: 'Definition',
+            type: 'number',
+            identifier: 'i',
+            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
+          },
+          {
+            tokenType: 'WhileLoop',
+            expression: {
+              tokenType: 'BooleanExpression',
+              op: '<',
+              left: { tokenType: 'Variable', scope: null, variableName: 'i' },
+              right: {
+                tokenType: 'Variable',
+                scope: null,
+                variableName: 'index'
+              }
+            },
+            within: [
+              {
+                tokenType: 'Reassignment',
+                variable: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'nextNode'
+                },
+                equals: {
+                  tokenType: 'FuncCall',
+                  functionName: 'getNext',
+                  args: null,
+                  scope: { tokenType: 'ScopeSpec', scope: 'nextNode' }
                 }
               },
               {
@@ -205,80 +646,396 @@
                   ]
                 }
               },
-              { tokenType: 'Break' },
-              [length]: 4
+              [length]: 2
             ]
           },
           {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
-                {
-                  tokenType: 'Variable',
-                  scope: null,
-                  variableName: 'i'
-                },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+            tokenType: 'Return',
+            value: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'nextNode'
+            }
           },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
-                {
-                  tokenType: 'Variable',
-                  scope: null,
-                  variableName: 'z'
-                },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
-                {
-                  tokenType: 'Variable',
-                  scope: null,
-                  variableName: 'x'
-                },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
-                {
-                  tokenType: 'Variable',
-                  scope: null,
-                  variableName: 'y'
-                },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          { tokenType: 'Return', value: null },
-          [length]: 10
+          [length]: 4
         ]
       },
-      [length]: 3
+      {
+        tokenType: 'Function',
+        funcName: 'get',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'number', identifier: 'index' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Definition',
+            type: 'Node',
+            identifier: 'inQ',
+            equals: {
+              tokenType: 'FuncCall',
+              functionName: 'getNode',
+              args: {
+                tokenType: 'ArgumentsIn',
+                args: [
+                  {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'index'
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: null
+            }
+          },
+          {
+            tokenType: 'Return',
+            value: {
+              tokenType: 'FuncCall',
+              functionName: 'getValue',
+              args: null,
+              scope: { tokenType: 'ScopeSpec', scope: 'inQ' }
+            }
+          },
+          [length]: 2
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'remove',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'number', identifier: 'index' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Definition',
+            type: 'Node',
+            identifier: 'removed',
+            equals: {
+              tokenType: 'FuncCall',
+              functionName: 'getNode',
+              args: {
+                tokenType: 'ArgumentsIn',
+                args: [
+                  {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'index'
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: null
+            }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'linkNext',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'undefined',
+                  value: undefined
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'removed' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'linkPrev',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'undefined',
+                  value: undefined
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'removed' }
+          },
+          {
+            tokenType: 'Definition',
+            type: 'Node',
+            identifier: 'next',
+            equals: {
+              tokenType: 'FuncCall',
+              functionName: 'getNext',
+              args: null,
+              scope: { tokenType: 'ScopeSpec', scope: 'removed' }
+            }
+          },
+          {
+            tokenType: 'Definition',
+            type: 'Node',
+            identifier: 'prev',
+            equals: {
+              tokenType: 'FuncCall',
+              functionName: 'getPrev',
+              args: null,
+              scope: { tokenType: 'ScopeSpec', scope: 'removed' }
+            }
+          },
+          {
+            tokenType: 'IfBlock',
+            ifBlock: {
+              expression: {
+                tokenType: 'BooleanExpression',
+                op: '!=',
+                left: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'next'
+                },
+                right: {
+                  tokenType: 'Primitive',
+                  type: 'undefined',
+                  value: undefined
+                }
+              },
+              within: [
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'linkPrev',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'prev'
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { tokenType: 'ScopeSpec', scope: 'next' }
+                },
+                [length]: 1
+              ]
+            },
+            elifBlocks: [ [length]: 0 ],
+            elseBlock: null
+          },
+          {
+            tokenType: 'IfBlock',
+            ifBlock: {
+              expression: {
+                tokenType: 'BooleanExpression',
+                op: '!=',
+                left: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'prev'
+                },
+                right: {
+                  tokenType: 'Primitive',
+                  type: 'undefined',
+                  value: undefined
+                }
+              },
+              within: [
+                {
+                  tokenType: 'FuncCall',
+                  functionName: 'linkNext',
+                  args: {
+                    tokenType: 'ArgumentsIn',
+                    args: [
+                      {
+                        tokenType: 'Variable',
+                        scope: null,
+                        variableName: 'next'
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { tokenType: 'ScopeSpec', scope: 'prev' }
+                },
+                [length]: 1
+              ]
+            },
+            elifBlocks: [ [length]: 0 ],
+            elseBlock: null
+          },
+          {
+            tokenType: 'Reassignment',
+            variable: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'length'
+            },
+            equals: {
+              tokenType: 'ArithmeticExpression',
+              left: {
+                tokenType: 'Variable',
+                scope: null,
+                variableName: 'length'
+              },
+              right: [
+                {
+                  tokenType: 'ArithmeticOperation',
+                  op: '-',
+                  value: { tokenType: 'Primitive', type: 'number', value: 1 }
+                },
+                [length]: 1
+              ]
+            }
+          },
+          {
+            tokenType: 'Return',
+            value: {
+              tokenType: 'FuncCall',
+              functionName: 'getValue',
+              args: null,
+              scope: { tokenType: 'ScopeSpec', scope: 'removed' }
+            }
+          },
+          [length]: 9
+        ]
+      },
+      [length]: 8
     ]
   },
-  [length]: 1
+  {
+    tokenType: 'Class',
+    className: 'Node',
+    within: [
+      {
+        tokenType: 'Definition',
+        type: 'Node',
+        identifier: 'next',
+        equals: null
+      },
+      {
+        tokenType: 'Definition',
+        type: 'Node',
+        identifier: 'prev',
+        equals: null
+      },
+      {
+        tokenType: 'Definition',
+        type: 'number',
+        identifier: 'value',
+        equals: null
+      },
+      {
+        tokenType: 'Constructor',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'number', identifier: 'x' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Reassignment',
+            variable: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'value'
+            },
+            equals: { tokenType: 'Variable', scope: null, variableName: 'x' }
+          },
+          [length]: 1
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'linkNext',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'Node', identifier: 'n' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Reassignment',
+            variable: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'next'
+            },
+            equals: { tokenType: 'Variable', scope: null, variableName: 'n' }
+          },
+          { tokenType: 'Return', value: null },
+          [length]: 2
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'linkPrev',
+        args: {
+          tokenType: 'ArgumentsDefine',
+          args: [ { type: 'Node', identifier: 'n' }, [length]: 1 ]
+        },
+        within: [
+          {
+            tokenType: 'Reassignment',
+            variable: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'prev'
+            },
+            equals: { tokenType: 'Variable', scope: null, variableName: 'n' }
+          },
+          { tokenType: 'Return', value: null },
+          [length]: 2
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'getNext',
+        args: null,
+        within: [
+          {
+            tokenType: 'Return',
+            value: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'next'
+            }
+          },
+          [length]: 1
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'getPrev',
+        args: null,
+        within: [
+          {
+            tokenType: 'Return',
+            value: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'prev'
+            }
+          },
+          [length]: 1
+        ]
+      },
+      {
+        tokenType: 'Function',
+        funcName: 'getValue',
+        args: null,
+        within: [
+          {
+            tokenType: 'Return',
+            value: {
+              tokenType: 'Variable',
+              scope: null,
+              variableName: 'value'
+            }
+          },
+          [length]: 1
+        ]
+      },
+      [length]: 9
+    ]
+  },
+  [length]: 6
 ]

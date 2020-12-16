@@ -26,10 +26,10 @@ class HeapWrapper<T, S> {
   }
 
   public set(key: T, val: S) {
-    console.log("Set " + key + " to " + (isInstance((val as any)['value']) ? (val as unknown as Instance) : (val as any)['value']));
-    if (isInstance((val as any)['value'])) {
-      console.log(val);
-    }
+    // console.log("Set " + key + " to " + (isInstance((val as any)['value']) ? (val as unknown as Instance) : (val as any)['value']));
+    // if (isInstance((val as any)['value'])) {
+    //   console.log(val);
+    // }
     return this.heap.set(key, val);
   }
 
@@ -368,10 +368,10 @@ function checkGt(val: Primitives | Instance, val2: Primitives | Instance) {
 }
 
 function checkEq(val: Primitives | Instance, val2: Primitives | Instance) {
-  if (getTypeStr(val) != getTypeStr(val2)) {
+  if (getTypeStr(val) != getTypeStr(val2) && val != undefined && val2 != undefined) {
     throw new Error("Cannot compare values of two different types! (" + getTypeStr(val) + " == " + getTypeStr(val2) + ")");
   }
-  if (isInstance(val) || isInstance(val2)) {
+  if (isInstance(val) && isInstance(val2)) {
     return (val as Instance).pointer == (val2 as Instance).pointer;
   }
   return (val as Primitives) == (val2 as Primitives);
@@ -459,10 +459,15 @@ function evalBreak(ast: Break, state: IS): [undefined, IS] {
   throw be;
 }
 
+const LOOP_LIMIT = 10000;
+
 function evalWhileLoop(ast: WhileLoop, state: IS): [undefined, IS] {
   let [val, newState] = evalExpression(ast.expression, state);
   // let log = "WHILE LOOP ";
+  let i = 0;
   while (val == true) {
+    i++;
+    if (i > LOOP_LIMIT) { sendMsg({ tag: 'log', content: "Infinite loop detected! Loop looped more than LOOP_LIMIT=" + LOOP_LIMIT }); break };
     // log += "TRUE: " + val;
     // Implement breaks w/ exceptions
     try {

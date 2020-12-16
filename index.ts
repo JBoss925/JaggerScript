@@ -10,7 +10,16 @@ require.extensions['.j'] = function (module, filename) {
   module.exports = fs.readFileSync(filename, 'utf8');
 };
 
-let program = require('./test-program/test.j');
+// Choose a program to run
+let program = require('./test-program/DoublyLinkedList.j');
+// let program = require('./test-program/GetTheReference.j');
+// let program = require('./test-program/NestingDollClasses.j');
+// let program = require('./test-program/AllocateAnInstance.j');
+// let program = require('./test-program/FizzBuzz.j');
+// let program = require('./test-program/CubeRoot.j');
+// let program = require('./test-program/DoubleBreak.j');
+// let program = require('./test-program/OnlyTheEvens.j');
+// let program = require('./test-program/Random.j');
 
 try {
   let sampleOutput: any[] = parser.parse(program);
@@ -18,7 +27,7 @@ try {
   let convertedProgram: Program = convertToProgram(sampleOutput);
   fs.writeFileSync("./test-program/test.txt", inspect(convertedProgram, true, 200));
   let runProgram = evalProgram(convertedProgram);
-  fs.writeFileSync("./test-program/test_state.txt", inspect(runProgram, true, 200));
+  fs.writeFileSync("./test-program/test-state.txt", inspect(runProgram, true, 200));
   console.log('\n');
 }
 catch (ex) {

@@ -1,9 +1,9 @@
-class BreakTest {
+class DoubleBreak {
 
   constructor(){
     // This is a program that tests loop breaks.
-    // When working, this should log '1' four times
-    // in the console.
+    // When working, this should log the values
+    // ['1', '9', '9', '1'] in the console.
   }
 
   func main(){
@@ -19,7 +19,7 @@ class BreakTest {
       while(z < 1000){
         x = x + 1;
         z = z + 1;
-        break;
+        if (z > 8) { break; }
       }
       y = y + 1;
       i = i + 1;
