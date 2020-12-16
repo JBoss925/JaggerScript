@@ -1,6 +1,6 @@
 {
   heap: HeapWrapper {
-    heap: Map(35) {
+    heap: Map(36) {
       '1' => {
         value: {
           token: 'IN',
@@ -484,8 +484,149 @@
                     },
                     scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
                   },
+                  {
+                    token: 'FC',
+                    functionName: 'log',
+                    args: {
+                      token: 'AI',
+                      args: [
+                        {
+                          token: 'V',
+                          type: 'string',
+                          value: '',
+                          typeStr: 'string',
+                          numLiveReferences: 0
+                        },
+                        [length]: 1
+                      ]
+                    },
+                    scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+                  },
+                  {
+                    token: 'FC',
+                    functionName: 'log',
+                    args: {
+                      token: 'AI',
+                      args: [
+                        {
+                          token: 'V',
+                          type: 'string',
+                          value: 'Final elements:',
+                          typeStr: 'string',
+                          numLiveReferences: 0
+                        },
+                        [length]: 1
+                      ]
+                    },
+                    scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+                  },
+                  {
+                    token: 'D',
+                    type: 'number',
+                    identifier: 'j',
+                    equals: {
+                      token: 'V',
+                      type: 'number',
+                      value: 0,
+                      typeStr: 'number',
+                      numLiveReferences: 0
+                    }
+                  },
+                  {
+                    token: 'W',
+                    expression: {
+                      token: 'BE',
+                      operator: '<',
+                      left: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'j',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      right: {
+                        token: 'VA',
+                        scope: { token: 'S', scope: [ 'list', [length]: 1 ] },
+                        variableName: 'length',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      }
+                    },
+                    within: [
+                      {
+                        token: 'FC',
+                        functionName: 'log',
+                        args: {
+                          token: 'AI',
+                          args: [
+                            {
+                              token: 'FC',
+                              functionName: 'get',
+                              args: {
+                                token: 'AI',
+                                args: [
+                                  {
+                                    token: 'VA',
+                                    scope: undefined,
+                                    variableName: 'j',
+                                    type: 'unknown',
+                                    typeStr: 'unknown'
+                                  },
+                                  [length]: 1
+                                ]
+                              },
+                              scope: {
+                                token: 'S',
+                                scope: [ 'list', [length]: 1 ]
+                              }
+                            },
+                            [length]: 1
+                          ]
+                        },
+                        scope: {
+                          token: 'S',
+                          scope: [ 'console', [length]: 1 ]
+                        }
+                      },
+                      {
+                        token: 'R',
+                        variable: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'j',
+                          type: 'number',
+                          typeStr: 'number'
+                        },
+                        equals: {
+                          token: 'AE',
+                          left: {
+                            token: 'VA',
+                            scope: undefined,
+                            variableName: 'j',
+                            type: 'unknown',
+                            typeStr: 'unknown'
+                          },
+                          right: [
+                            {
+                              token: 'AO',
+                              operation: '+',
+                              value: {
+                                token: 'V',
+                                type: 'number',
+                                value: 1,
+                                typeStr: 'number',
+                                numLiveReferences: 0
+                              }
+                            },
+                            [length]: 1
+                          ]
+                        }
+                      },
+                      [length]: 2
+                    ]
+                  },
                   { token: 'RT', value: undefined },
-                  [length]: 21
+                  [length]: 25
                 ]
               },
               [length]: 1
@@ -969,42 +1110,6 @@
                     }
                   },
                   {
-                    token: 'FC',
-                    functionName: 'linkNext',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'undefined',
-                          value: undefined,
-                          typeStr: 'undefined',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                  },
-                  {
-                    token: 'FC',
-                    functionName: 'linkPrev',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'undefined',
-                          value: undefined,
-                          typeStr: 'undefined',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                  },
-                  {
                     token: 'D',
                     type: 'Node',
                     identifier: 'next',
@@ -1125,6 +1230,132 @@
                     elseBlock: undefined
                   },
                   {
+                    token: 'If',
+                    ifBlock: {
+                      expression: {
+                        token: 'BE',
+                        operator: '==',
+                        left: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'index',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        },
+                        right: {
+                          token: 'V',
+                          type: 'number',
+                          value: 0,
+                          typeStr: 'number',
+                          numLiveReferences: 0
+                        }
+                      },
+                      within: [
+                        {
+                          token: 'R',
+                          variable: {
+                            token: 'VA',
+                            scope: undefined,
+                            variableName: 'head',
+                            type: 'instance',
+                            typeStr: 'Node'
+                          },
+                          equals: {
+                            token: 'VA',
+                            scope: undefined,
+                            variableName: 'next',
+                            type: 'unknown',
+                            typeStr: 'unknown'
+                          }
+                        },
+                        [length]: 1
+                      ]
+                    },
+                    elifBlocks: [ [length]: 0 ],
+                    elseBlock: undefined
+                  },
+                  {
+                    token: 'If',
+                    ifBlock: {
+                      expression: {
+                        token: 'BE',
+                        operator: '==',
+                        left: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'index',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        },
+                        right: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'length',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        }
+                      },
+                      within: [
+                        {
+                          token: 'R',
+                          variable: {
+                            token: 'VA',
+                            scope: undefined,
+                            variableName: 'tail',
+                            type: 'unknown',
+                            typeStr: 'unknown'
+                          },
+                          equals: {
+                            token: 'VA',
+                            scope: undefined,
+                            variableName: 'prev',
+                            type: 'unknown',
+                            typeStr: 'unknown'
+                          }
+                        },
+                        [length]: 1
+                      ]
+                    },
+                    elifBlocks: [ [length]: 0 ],
+                    elseBlock: undefined
+                  },
+                  {
+                    token: 'FC',
+                    functionName: 'linkNext',
+                    args: {
+                      token: 'AI',
+                      args: [
+                        {
+                          token: 'V',
+                          type: 'undefined',
+                          value: undefined,
+                          typeStr: 'undefined',
+                          numLiveReferences: 0
+                        },
+                        [length]: 1
+                      ]
+                    },
+                    scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                  },
+                  {
+                    token: 'FC',
+                    functionName: 'linkPrev',
+                    args: {
+                      token: 'AI',
+                      args: [
+                        {
+                          token: 'V',
+                          type: 'undefined',
+                          value: undefined,
+                          typeStr: 'undefined',
+                          numLiveReferences: 0
+                        },
+                        [length]: 1
+                      ]
+                    },
+                    scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                  },
+                  {
                     token: 'R',
                     variable: {
                       token: 'VA',
@@ -1167,7 +1398,7 @@
                       scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
                     }
                   },
-                  [length]: 9
+                  [length]: 11
                 ]
               },
               [length]: 4
@@ -1180,7 +1411,7 @@
             }
           },
           pointer: '2',
-          globalScope: Map(3) { 'head' => '6', 'tail' => '24', 'length' => '35' }
+          globalScope: Map(3) { 'head' => '12', 'tail' => '24', 'length' => '36' }
         },
         typeStr: 'DoublyLinkedList',
         numLiveReferences: 1,
@@ -1405,10 +1636,10 @@
             }
           },
           pointer: '6',
-          globalScope: Map(3) { 'next' => '33', 'prev' => '34', 'value' => '10' }
+          globalScope: Map(3) { 'next' => '34', 'prev' => '35', 'value' => '10' }
         },
         typeStr: 'Node',
-        numLiveReferences: 3,
+        numLiveReferences: 1,
         token: 'V',
         type: 'instance',
         heapPtr: '6'
@@ -1646,10 +1877,10 @@
             }
           },
           pointer: '12',
-          globalScope: Map(3) { 'next' => '18', 'prev' => '6', 'value' => '16' }
+          globalScope: Map(3) { 'next' => '24', 'prev' => '33', 'value' => '16' }
         },
         typeStr: 'Node',
-        numLiveReferences: 1,
+        numLiveReferences: 3,
         token: 'V',
         type: 'instance',
         heapPtr: '12'
@@ -1890,7 +2121,7 @@
           globalScope: Map(3) { 'next' => '30', 'prev' => '31', 'value' => '22' }
         },
         typeStr: 'Node',
-        numLiveReferences: 3,
+        numLiveReferences: 1,
         token: 'V',
         type: 'instance',
         heapPtr: '18'
@@ -2128,10 +2359,10 @@
             }
           },
           pointer: '24',
-          globalScope: Map(3) { 'next' => '25', 'prev' => '18', 'value' => '28' }
+          globalScope: Map(3) { 'next' => '25', 'prev' => '12', 'value' => '28' }
         },
         typeStr: 'Node',
-        numLiveReferences: 2,
+        numLiveReferences: 3,
         token: 'V',
         type: 'instance',
         heapPtr: '24'
@@ -2217,12 +2448,20 @@
         heapPtr: '34'
       },
       '35' => {
+        typeStr: 'undefined',
+        numLiveReferences: 1,
+        value: undefined,
+        type: 'undefined',
+        token: 'V',
+        heapPtr: '35'
+      },
+      '36' => {
         typeStr: 'number',
         numLiveReferences: 1,
         value: 2,
         type: 'number',
         token: 'V',
-        heapPtr: '35'
+        heapPtr: '36'
       }
     }
   },
@@ -2698,8 +2937,143 @@
               },
               scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
             },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'string',
+                    value: '',
+                    typeStr: 'string',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'string',
+                    value: 'Final elements:',
+                    typeStr: 'string',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'D',
+              type: 'number',
+              identifier: 'j',
+              equals: {
+                token: 'V',
+                type: 'number',
+                value: 0,
+                typeStr: 'number',
+                numLiveReferences: 0
+              }
+            },
+            {
+              token: 'W',
+              expression: {
+                token: 'BE',
+                operator: '<',
+                left: {
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'j',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                },
+                right: {
+                  token: 'VA',
+                  scope: { token: 'S', scope: [ 'list', [length]: 1 ] },
+                  variableName: 'length',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                }
+              },
+              within: [
+                {
+                  token: 'FC',
+                  functionName: 'log',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'FC',
+                        functionName: 'get',
+                        args: {
+                          token: 'AI',
+                          args: [
+                            {
+                              token: 'VA',
+                              scope: undefined,
+                              variableName: 'j',
+                              type: 'unknown',
+                              typeStr: 'unknown'
+                            },
+                            [length]: 1
+                          ]
+                        },
+                        scope: { token: 'S', scope: [ 'list', [length]: 1 ] }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+                },
+                {
+                  token: 'R',
+                  variable: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'j',
+                    type: 'number',
+                    typeStr: 'number'
+                  },
+                  equals: {
+                    token: 'AE',
+                    left: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'j',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    },
+                    right: [
+                      {
+                        token: 'AO',
+                        operation: '+',
+                        value: {
+                          token: 'V',
+                          type: 'number',
+                          value: 1,
+                          typeStr: 'number',
+                          numLiveReferences: 0
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  }
+                },
+                [length]: 2
+              ]
+            },
             { token: 'RT', value: undefined },
-            [length]: 21
+            [length]: 25
           ]
         },
         [length]: 1
@@ -3176,8 +3550,143 @@
               },
               scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
             },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'string',
+                    value: '',
+                    typeStr: 'string',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'string',
+                    value: 'Final elements:',
+                    typeStr: 'string',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'D',
+              type: 'number',
+              identifier: 'j',
+              equals: {
+                token: 'V',
+                type: 'number',
+                value: 0,
+                typeStr: 'number',
+                numLiveReferences: 0
+              }
+            },
+            {
+              token: 'W',
+              expression: {
+                token: 'BE',
+                operator: '<',
+                left: {
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'j',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                },
+                right: {
+                  token: 'VA',
+                  scope: { token: 'S', scope: [ 'list', [length]: 1 ] },
+                  variableName: 'length',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                }
+              },
+              within: [
+                {
+                  token: 'FC',
+                  functionName: 'log',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'FC',
+                        functionName: 'get',
+                        args: {
+                          token: 'AI',
+                          args: [
+                            {
+                              token: 'VA',
+                              scope: undefined,
+                              variableName: 'j',
+                              type: 'unknown',
+                              typeStr: 'unknown'
+                            },
+                            [length]: 1
+                          ]
+                        },
+                        scope: { token: 'S', scope: [ 'list', [length]: 1 ] }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+                },
+                {
+                  token: 'R',
+                  variable: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'j',
+                    type: 'number',
+                    typeStr: 'number'
+                  },
+                  equals: {
+                    token: 'AE',
+                    left: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'j',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    },
+                    right: [
+                      {
+                        token: 'AO',
+                        operation: '+',
+                        value: {
+                          token: 'V',
+                          type: 'number',
+                          value: 1,
+                          typeStr: 'number',
+                          numLiveReferences: 0
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  }
+                },
+                [length]: 2
+              ]
+            },
             { token: 'RT', value: undefined },
-            [length]: 21
+            [length]: 25
           ]
         },
         [length]: 1
@@ -3623,42 +4132,6 @@
               }
             },
             {
-              token: 'FC',
-              functionName: 'linkNext',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'undefined',
-                    value: undefined,
-                    typeStr: 'undefined',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'linkPrev',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'undefined',
-                    value: undefined,
-                    typeStr: 'undefined',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-            },
-            {
               token: 'D',
               type: 'Node',
               identifier: 'next',
@@ -3773,6 +4246,132 @@
               elseBlock: undefined
             },
             {
+              token: 'If',
+              ifBlock: {
+                expression: {
+                  token: 'BE',
+                  operator: '==',
+                  left: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'index',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  right: {
+                    token: 'V',
+                    type: 'number',
+                    value: 0,
+                    typeStr: 'number',
+                    numLiveReferences: 0
+                  }
+                },
+                within: [
+                  {
+                    token: 'R',
+                    variable: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'head',
+                      type: 'instance',
+                      typeStr: 'Node'
+                    },
+                    equals: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'next',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    }
+                  },
+                  [length]: 1
+                ]
+              },
+              elifBlocks: [ [length]: 0 ],
+              elseBlock: undefined
+            },
+            {
+              token: 'If',
+              ifBlock: {
+                expression: {
+                  token: 'BE',
+                  operator: '==',
+                  left: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'index',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  right: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'length',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  }
+                },
+                within: [
+                  {
+                    token: 'R',
+                    variable: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'tail',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    },
+                    equals: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'prev',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    }
+                  },
+                  [length]: 1
+                ]
+              },
+              elifBlocks: [ [length]: 0 ],
+              elseBlock: undefined
+            },
+            {
+              token: 'FC',
+              functionName: 'linkNext',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'undefined',
+                    value: undefined,
+                    typeStr: 'undefined',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+            },
+            {
+              token: 'FC',
+              functionName: 'linkPrev',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'undefined',
+                    value: undefined,
+                    typeStr: 'undefined',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+            },
+            {
               token: 'R',
               variable: {
                 token: 'VA',
@@ -3815,7 +4414,7 @@
                 scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
               }
             },
-            [length]: 9
+            [length]: 11
           ]
         },
         [length]: 4
@@ -4478,8 +5077,143 @@
               },
               scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
             },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'string',
+                    value: '',
+                    typeStr: 'string',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'FC',
+              functionName: 'log',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'string',
+                    value: 'Final elements:',
+                    typeStr: 'string',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+            },
+            {
+              token: 'D',
+              type: 'number',
+              identifier: 'j',
+              equals: {
+                token: 'V',
+                type: 'number',
+                value: 0,
+                typeStr: 'number',
+                numLiveReferences: 0
+              }
+            },
+            {
+              token: 'W',
+              expression: {
+                token: 'BE',
+                operator: '<',
+                left: {
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'j',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                },
+                right: {
+                  token: 'VA',
+                  scope: { token: 'S', scope: [ 'list', [length]: 1 ] },
+                  variableName: 'length',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                }
+              },
+              within: [
+                {
+                  token: 'FC',
+                  functionName: 'log',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'FC',
+                        functionName: 'get',
+                        args: {
+                          token: 'AI',
+                          args: [
+                            {
+                              token: 'VA',
+                              scope: undefined,
+                              variableName: 'j',
+                              type: 'unknown',
+                              typeStr: 'unknown'
+                            },
+                            [length]: 1
+                          ]
+                        },
+                        scope: { token: 'S', scope: [ 'list', [length]: 1 ] }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+                },
+                {
+                  token: 'R',
+                  variable: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'j',
+                    type: 'number',
+                    typeStr: 'number'
+                  },
+                  equals: {
+                    token: 'AE',
+                    left: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'j',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    },
+                    right: [
+                      {
+                        token: 'AO',
+                        operation: '+',
+                        value: {
+                          token: 'V',
+                          type: 'number',
+                          value: 1,
+                          typeStr: 'number',
+                          numLiveReferences: 0
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  }
+                },
+                [length]: 2
+              ]
+            },
             { token: 'RT', value: undefined },
-            [length]: 21
+            [length]: 25
           ]
         },
         [length]: 1
@@ -4958,8 +5692,143 @@
             },
             scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
           },
+          {
+            token: 'FC',
+            functionName: 'log',
+            args: {
+              token: 'AI',
+              args: [
+                {
+                  token: 'V',
+                  type: 'string',
+                  value: '',
+                  typeStr: 'string',
+                  numLiveReferences: 0
+                },
+                [length]: 1
+              ]
+            },
+            scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+          },
+          {
+            token: 'FC',
+            functionName: 'log',
+            args: {
+              token: 'AI',
+              args: [
+                {
+                  token: 'V',
+                  type: 'string',
+                  value: 'Final elements:',
+                  typeStr: 'string',
+                  numLiveReferences: 0
+                },
+                [length]: 1
+              ]
+            },
+            scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+          },
+          {
+            token: 'D',
+            type: 'number',
+            identifier: 'j',
+            equals: {
+              token: 'V',
+              type: 'number',
+              value: 0,
+              typeStr: 'number',
+              numLiveReferences: 0
+            }
+          },
+          {
+            token: 'W',
+            expression: {
+              token: 'BE',
+              operator: '<',
+              left: {
+                token: 'VA',
+                scope: undefined,
+                variableName: 'j',
+                type: 'unknown',
+                typeStr: 'unknown'
+              },
+              right: {
+                token: 'VA',
+                scope: { token: 'S', scope: [ 'list', [length]: 1 ] },
+                variableName: 'length',
+                type: 'unknown',
+                typeStr: 'unknown'
+              }
+            },
+            within: [
+              {
+                token: 'FC',
+                functionName: 'log',
+                args: {
+                  token: 'AI',
+                  args: [
+                    {
+                      token: 'FC',
+                      functionName: 'get',
+                      args: {
+                        token: 'AI',
+                        args: [
+                          {
+                            token: 'VA',
+                            scope: undefined,
+                            variableName: 'j',
+                            type: 'unknown',
+                            typeStr: 'unknown'
+                          },
+                          [length]: 1
+                        ]
+                      },
+                      scope: { token: 'S', scope: [ 'list', [length]: 1 ] }
+                    },
+                    [length]: 1
+                  ]
+                },
+                scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
+              },
+              {
+                token: 'R',
+                variable: {
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'j',
+                  type: 'number',
+                  typeStr: 'number'
+                },
+                equals: {
+                  token: 'AE',
+                  left: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'j',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  right: [
+                    {
+                      token: 'AO',
+                      operation: '+',
+                      value: {
+                        token: 'V',
+                        type: 'number',
+                        value: 1,
+                        typeStr: 'number',
+                        numLiveReferences: 0
+                      }
+                    },
+                    [length]: 1
+                  ]
+                }
+              },
+              [length]: 2
+            ]
+          },
           { token: 'RT', value: undefined },
-          [length]: 21
+          [length]: 25
         ]
       }
     },
@@ -5397,42 +6266,6 @@
               }
             },
             {
-              token: 'FC',
-              functionName: 'linkNext',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'undefined',
-                    value: undefined,
-                    typeStr: 'undefined',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'linkPrev',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'undefined',
-                    value: undefined,
-                    typeStr: 'undefined',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-            },
-            {
               token: 'D',
               type: 'Node',
               identifier: 'next',
@@ -5547,6 +6380,132 @@
               elseBlock: undefined
             },
             {
+              token: 'If',
+              ifBlock: {
+                expression: {
+                  token: 'BE',
+                  operator: '==',
+                  left: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'index',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  right: {
+                    token: 'V',
+                    type: 'number',
+                    value: 0,
+                    typeStr: 'number',
+                    numLiveReferences: 0
+                  }
+                },
+                within: [
+                  {
+                    token: 'R',
+                    variable: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'head',
+                      type: 'instance',
+                      typeStr: 'Node'
+                    },
+                    equals: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'next',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    }
+                  },
+                  [length]: 1
+                ]
+              },
+              elifBlocks: [ [length]: 0 ],
+              elseBlock: undefined
+            },
+            {
+              token: 'If',
+              ifBlock: {
+                expression: {
+                  token: 'BE',
+                  operator: '==',
+                  left: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'index',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  right: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'length',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  }
+                },
+                within: [
+                  {
+                    token: 'R',
+                    variable: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'tail',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    },
+                    equals: {
+                      token: 'VA',
+                      scope: undefined,
+                      variableName: 'prev',
+                      type: 'unknown',
+                      typeStr: 'unknown'
+                    }
+                  },
+                  [length]: 1
+                ]
+              },
+              elifBlocks: [ [length]: 0 ],
+              elseBlock: undefined
+            },
+            {
+              token: 'FC',
+              functionName: 'linkNext',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'undefined',
+                    value: undefined,
+                    typeStr: 'undefined',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+            },
+            {
+              token: 'FC',
+              functionName: 'linkPrev',
+              args: {
+                token: 'AI',
+                args: [
+                  {
+                    token: 'V',
+                    type: 'undefined',
+                    value: undefined,
+                    typeStr: 'undefined',
+                    numLiveReferences: 0
+                  },
+                  [length]: 1
+                ]
+              },
+              scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+            },
+            {
               token: 'R',
               variable: {
                 token: 'VA',
@@ -5589,7 +6548,7 @@
                 scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
               }
             },
-            [length]: 9
+            [length]: 11
           ]
         },
         [length]: 4
@@ -5848,42 +6807,6 @@
                   }
                 },
                 {
-                  token: 'FC',
-                  functionName: 'linkNext',
-                  args: {
-                    token: 'AI',
-                    args: [
-                      {
-                        token: 'V',
-                        type: 'undefined',
-                        value: undefined,
-                        typeStr: 'undefined',
-                        numLiveReferences: 0
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                },
-                {
-                  token: 'FC',
-                  functionName: 'linkPrev',
-                  args: {
-                    token: 'AI',
-                    args: [
-                      {
-                        token: 'V',
-                        type: 'undefined',
-                        value: undefined,
-                        typeStr: 'undefined',
-                        numLiveReferences: 0
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                },
-                {
                   token: 'D',
                   type: 'Node',
                   identifier: 'next',
@@ -5998,6 +6921,132 @@
                   elseBlock: undefined
                 },
                 {
+                  token: 'If',
+                  ifBlock: {
+                    expression: {
+                      token: 'BE',
+                      operator: '==',
+                      left: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'index',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      right: {
+                        token: 'V',
+                        type: 'number',
+                        value: 0,
+                        typeStr: 'number',
+                        numLiveReferences: 0
+                      }
+                    },
+                    within: [
+                      {
+                        token: 'R',
+                        variable: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'head',
+                          type: 'instance',
+                          typeStr: 'Node'
+                        },
+                        equals: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'next',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  elifBlocks: [ [length]: 0 ],
+                  elseBlock: undefined
+                },
+                {
+                  token: 'If',
+                  ifBlock: {
+                    expression: {
+                      token: 'BE',
+                      operator: '==',
+                      left: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'index',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      right: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'length',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      }
+                    },
+                    within: [
+                      {
+                        token: 'R',
+                        variable: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'tail',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        },
+                        equals: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'prev',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  elifBlocks: [ [length]: 0 ],
+                  elseBlock: undefined
+                },
+                {
+                  token: 'FC',
+                  functionName: 'linkNext',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'V',
+                        type: 'undefined',
+                        value: undefined,
+                        typeStr: 'undefined',
+                        numLiveReferences: 0
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                },
+                {
+                  token: 'FC',
+                  functionName: 'linkPrev',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'V',
+                        type: 'undefined',
+                        value: undefined,
+                        typeStr: 'undefined',
+                        numLiveReferences: 0
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                },
+                {
                   token: 'R',
                   variable: {
                     token: 'VA',
@@ -6040,7 +7089,7 @@
                     scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
                   }
                 },
-                [length]: 9
+                [length]: 11
               ]
             },
             [length]: 4
@@ -6558,42 +7607,6 @@
                   }
                 },
                 {
-                  token: 'FC',
-                  functionName: 'linkNext',
-                  args: {
-                    token: 'AI',
-                    args: [
-                      {
-                        token: 'V',
-                        type: 'undefined',
-                        value: undefined,
-                        typeStr: 'undefined',
-                        numLiveReferences: 0
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                },
-                {
-                  token: 'FC',
-                  functionName: 'linkPrev',
-                  args: {
-                    token: 'AI',
-                    args: [
-                      {
-                        token: 'V',
-                        type: 'undefined',
-                        value: undefined,
-                        typeStr: 'undefined',
-                        numLiveReferences: 0
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                },
-                {
                   token: 'D',
                   type: 'Node',
                   identifier: 'next',
@@ -6708,6 +7721,132 @@
                   elseBlock: undefined
                 },
                 {
+                  token: 'If',
+                  ifBlock: {
+                    expression: {
+                      token: 'BE',
+                      operator: '==',
+                      left: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'index',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      right: {
+                        token: 'V',
+                        type: 'number',
+                        value: 0,
+                        typeStr: 'number',
+                        numLiveReferences: 0
+                      }
+                    },
+                    within: [
+                      {
+                        token: 'R',
+                        variable: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'head',
+                          type: 'instance',
+                          typeStr: 'Node'
+                        },
+                        equals: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'next',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  elifBlocks: [ [length]: 0 ],
+                  elseBlock: undefined
+                },
+                {
+                  token: 'If',
+                  ifBlock: {
+                    expression: {
+                      token: 'BE',
+                      operator: '==',
+                      left: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'index',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      right: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'length',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      }
+                    },
+                    within: [
+                      {
+                        token: 'R',
+                        variable: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'tail',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        },
+                        equals: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'prev',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  elifBlocks: [ [length]: 0 ],
+                  elseBlock: undefined
+                },
+                {
+                  token: 'FC',
+                  functionName: 'linkNext',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'V',
+                        type: 'undefined',
+                        value: undefined,
+                        typeStr: 'undefined',
+                        numLiveReferences: 0
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                },
+                {
+                  token: 'FC',
+                  functionName: 'linkPrev',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'V',
+                        type: 'undefined',
+                        value: undefined,
+                        typeStr: 'undefined',
+                        numLiveReferences: 0
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                },
+                {
                   token: 'R',
                   variable: {
                     token: 'VA',
@@ -6750,7 +7889,7 @@
                     scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
                   }
                 },
-                [length]: 9
+                [length]: 11
               ]
             },
             [length]: 4
@@ -7278,42 +8417,6 @@
                   }
                 },
                 {
-                  token: 'FC',
-                  functionName: 'linkNext',
-                  args: {
-                    token: 'AI',
-                    args: [
-                      {
-                        token: 'V',
-                        type: 'undefined',
-                        value: undefined,
-                        typeStr: 'undefined',
-                        numLiveReferences: 0
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                },
-                {
-                  token: 'FC',
-                  functionName: 'linkPrev',
-                  args: {
-                    token: 'AI',
-                    args: [
-                      {
-                        token: 'V',
-                        type: 'undefined',
-                        value: undefined,
-                        typeStr: 'undefined',
-                        numLiveReferences: 0
-                      },
-                      [length]: 1
-                    ]
-                  },
-                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-                },
-                {
                   token: 'D',
                   type: 'Node',
                   identifier: 'next',
@@ -7428,6 +8531,132 @@
                   elseBlock: undefined
                 },
                 {
+                  token: 'If',
+                  ifBlock: {
+                    expression: {
+                      token: 'BE',
+                      operator: '==',
+                      left: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'index',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      right: {
+                        token: 'V',
+                        type: 'number',
+                        value: 0,
+                        typeStr: 'number',
+                        numLiveReferences: 0
+                      }
+                    },
+                    within: [
+                      {
+                        token: 'R',
+                        variable: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'head',
+                          type: 'instance',
+                          typeStr: 'Node'
+                        },
+                        equals: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'next',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  elifBlocks: [ [length]: 0 ],
+                  elseBlock: undefined
+                },
+                {
+                  token: 'If',
+                  ifBlock: {
+                    expression: {
+                      token: 'BE',
+                      operator: '==',
+                      left: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'index',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      },
+                      right: {
+                        token: 'VA',
+                        scope: undefined,
+                        variableName: 'length',
+                        type: 'unknown',
+                        typeStr: 'unknown'
+                      }
+                    },
+                    within: [
+                      {
+                        token: 'R',
+                        variable: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'tail',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        },
+                        equals: {
+                          token: 'VA',
+                          scope: undefined,
+                          variableName: 'prev',
+                          type: 'unknown',
+                          typeStr: 'unknown'
+                        }
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  elifBlocks: [ [length]: 0 ],
+                  elseBlock: undefined
+                },
+                {
+                  token: 'FC',
+                  functionName: 'linkNext',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'V',
+                        type: 'undefined',
+                        value: undefined,
+                        typeStr: 'undefined',
+                        numLiveReferences: 0
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                },
+                {
+                  token: 'FC',
+                  functionName: 'linkPrev',
+                  args: {
+                    token: 'AI',
+                    args: [
+                      {
+                        token: 'V',
+                        type: 'undefined',
+                        value: undefined,
+                        typeStr: 'undefined',
+                        numLiveReferences: 0
+                      },
+                      [length]: 1
+                    ]
+                  },
+                  scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+                },
+                {
                   token: 'R',
                   variable: {
                     token: 'VA',
@@ -7470,7 +8699,7 @@
                     scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
                   }
                 },
-                [length]: 9
+                [length]: 11
               ]
             },
             [length]: 4
@@ -7976,42 +9205,6 @@
             }
           },
           {
-            token: 'FC',
-            functionName: 'linkNext',
-            args: {
-              token: 'AI',
-              args: [
-                {
-                  token: 'V',
-                  type: 'undefined',
-                  value: undefined,
-                  typeStr: 'undefined',
-                  numLiveReferences: 0
-                },
-                [length]: 1
-              ]
-            },
-            scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-          },
-          {
-            token: 'FC',
-            functionName: 'linkPrev',
-            args: {
-              token: 'AI',
-              args: [
-                {
-                  token: 'V',
-                  type: 'undefined',
-                  value: undefined,
-                  typeStr: 'undefined',
-                  numLiveReferences: 0
-                },
-                [length]: 1
-              ]
-            },
-            scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
-          },
-          {
             token: 'D',
             type: 'Node',
             identifier: 'next',
@@ -8126,6 +9319,132 @@
             elseBlock: undefined
           },
           {
+            token: 'If',
+            ifBlock: {
+              expression: {
+                token: 'BE',
+                operator: '==',
+                left: {
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'index',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                },
+                right: {
+                  token: 'V',
+                  type: 'number',
+                  value: 0,
+                  typeStr: 'number',
+                  numLiveReferences: 0
+                }
+              },
+              within: [
+                {
+                  token: 'R',
+                  variable: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'head',
+                    type: 'instance',
+                    typeStr: 'Node'
+                  },
+                  equals: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'next',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  }
+                },
+                [length]: 1
+              ]
+            },
+            elifBlocks: [ [length]: 0 ],
+            elseBlock: undefined
+          },
+          {
+            token: 'If',
+            ifBlock: {
+              expression: {
+                token: 'BE',
+                operator: '==',
+                left: {
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'index',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                },
+                right: {
+                  token: 'VA',
+                  scope: undefined,
+                  variableName: 'length',
+                  type: 'unknown',
+                  typeStr: 'unknown'
+                }
+              },
+              within: [
+                {
+                  token: 'R',
+                  variable: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'tail',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  },
+                  equals: {
+                    token: 'VA',
+                    scope: undefined,
+                    variableName: 'prev',
+                    type: 'unknown',
+                    typeStr: 'unknown'
+                  }
+                },
+                [length]: 1
+              ]
+            },
+            elifBlocks: [ [length]: 0 ],
+            elseBlock: undefined
+          },
+          {
+            token: 'FC',
+            functionName: 'linkNext',
+            args: {
+              token: 'AI',
+              args: [
+                {
+                  token: 'V',
+                  type: 'undefined',
+                  value: undefined,
+                  typeStr: 'undefined',
+                  numLiveReferences: 0
+                },
+                [length]: 1
+              ]
+            },
+            scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+          },
+          {
+            token: 'FC',
+            functionName: 'linkPrev',
+            args: {
+              token: 'AI',
+              args: [
+                {
+                  token: 'V',
+                  type: 'undefined',
+                  value: undefined,
+                  typeStr: 'undefined',
+                  numLiveReferences: 0
+                },
+                [length]: 1
+              ]
+            },
+            scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
+          },
+          {
             token: 'R',
             variable: {
               token: 'VA',
@@ -8168,7 +9487,7 @@
               scope: { token: 'S', scope: [ 'removed', [length]: 1 ] }
             }
           },
-          [length]: 9
+          [length]: 11
         ]
       }
     },

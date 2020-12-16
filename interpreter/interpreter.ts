@@ -626,10 +626,11 @@ function clearInstance(inst: Instance, state: IS): [undefined, IS] {
   for (let heapPtr of Array.from(inst.globalScope.values())) {
     let heapVal = newState.heap.get(heapPtr);
     heapVal = heapVal ? heapVal : ((() => { throw new Error("Heap val not found at pointer " + heapPtr + "!"); })());
-    if (isInstance(heapVal.value)) {
+    heapVal.numLiveReferences--;
+    if (isInstance(heapVal.value) && heapVal.numLiveReferences == 0) {
       [, newState] = clearInstance(heapVal.value as Instance, newState);
     }
-    if (heapVal.numLiveReferences == 0) {
+    else if (heapVal.numLiveReferences == 0) {
       console.log("Deleted pointer " + heapPtr + " from the heap!");
       newState.heap.delete(heapPtr);
     }

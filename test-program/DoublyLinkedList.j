@@ -32,6 +32,13 @@ class Main {
     console.log('');
     console.log('Final list length:');
     console.log(list.length);
+    console.log('');
+    console.log('Final elements:');
+    number j = 0;
+    while(j < list.length){
+      console.log(list.get(j));
+      j = j + 1;
+    }
   }
 
 }
@@ -74,8 +81,6 @@ class DoublyLinkedList {
 
   func remove(number index){
     Node removed = getNode(index);
-    removed.linkNext(undefined);
-    removed.linkPrev(undefined);
     Node next = removed.getNext();
     Node prev = removed.getPrev();
     if(next != undefined){
@@ -84,6 +89,14 @@ class DoublyLinkedList {
     if(prev != undefined){
       prev.linkNext(next);
     }
+    if(index == 0){
+      head = next;
+    }
+    if(index == length){
+      tail = prev;
+    }
+    removed.linkNext(undefined);
+    removed.linkPrev(undefined);
     length = length - 1;
     return removed.getValue();
   }

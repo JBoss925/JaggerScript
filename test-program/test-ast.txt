@@ -381,8 +381,113 @@
             },
             scope: { tokenType: 'ScopeSpec', scope: 'console' }
           },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                { tokenType: 'Primitive', type: 'string', value: '' },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'log',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'string',
+                  value: 'Final elements:'
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'console' }
+          },
+          {
+            tokenType: 'Definition',
+            type: 'number',
+            identifier: 'j',
+            equals: { tokenType: 'Primitive', type: 'number', value: 0 }
+          },
+          {
+            tokenType: 'WhileLoop',
+            expression: {
+              tokenType: 'BooleanExpression',
+              op: '<',
+              left: { tokenType: 'Variable', scope: null, variableName: 'j' },
+              right: {
+                tokenType: 'Variable',
+                scope: { tokenType: 'ScopeSpec', scope: 'list' },
+                variableName: 'length'
+              }
+            },
+            within: [
+              {
+                tokenType: 'FuncCall',
+                functionName: 'log',
+                args: {
+                  tokenType: 'ArgumentsIn',
+                  args: [
+                    {
+                      tokenType: 'FuncCall',
+                      functionName: 'get',
+                      args: {
+                        tokenType: 'ArgumentsIn',
+                        args: [
+                          {
+                            tokenType: 'Variable',
+                            scope: null,
+                            variableName: 'j'
+                          },
+                          [length]: 1
+                        ]
+                      },
+                      scope: { tokenType: 'ScopeSpec', scope: 'list' }
+                    },
+                    [length]: 1
+                  ]
+                },
+                scope: { tokenType: 'ScopeSpec', scope: 'console' }
+              },
+              {
+                tokenType: 'Reassignment',
+                variable: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'j'
+                },
+                equals: {
+                  tokenType: 'ArithmeticExpression',
+                  left: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'j'
+                  },
+                  right: [
+                    {
+                      tokenType: 'ArithmeticOperation',
+                      op: '+',
+                      value: {
+                        tokenType: 'Primitive',
+                        type: 'number',
+                        value: 1
+                      }
+                    },
+                    [length]: 1
+                  ]
+                }
+              },
+              [length]: 2
+            ]
+          },
           { tokenType: 'Return', value: null },
-          [length]: 21
+          [length]: 25
         ]
       },
       [length]: 2
@@ -731,38 +836,6 @@
             }
           },
           {
-            tokenType: 'FuncCall',
-            functionName: 'linkNext',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
-                {
-                  tokenType: 'Primitive',
-                  type: 'undefined',
-                  value: undefined
-                },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'removed' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'linkPrev',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
-                {
-                  tokenType: 'Primitive',
-                  type: 'undefined',
-                  value: undefined
-                },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'removed' }
-          },
-          {
             tokenType: 'Definition',
             type: 'Node',
             identifier: 'next',
@@ -865,6 +938,108 @@
             elseBlock: null
           },
           {
+            tokenType: 'IfBlock',
+            ifBlock: {
+              expression: {
+                tokenType: 'BooleanExpression',
+                op: '==',
+                left: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'index'
+                },
+                right: { tokenType: 'Primitive', type: 'number', value: 0 }
+              },
+              within: [
+                {
+                  tokenType: 'Reassignment',
+                  variable: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'head'
+                  },
+                  equals: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'next'
+                  }
+                },
+                [length]: 1
+              ]
+            },
+            elifBlocks: [ [length]: 0 ],
+            elseBlock: null
+          },
+          {
+            tokenType: 'IfBlock',
+            ifBlock: {
+              expression: {
+                tokenType: 'BooleanExpression',
+                op: '==',
+                left: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'index'
+                },
+                right: {
+                  tokenType: 'Variable',
+                  scope: null,
+                  variableName: 'length'
+                }
+              },
+              within: [
+                {
+                  tokenType: 'Reassignment',
+                  variable: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'tail'
+                  },
+                  equals: {
+                    tokenType: 'Variable',
+                    scope: null,
+                    variableName: 'prev'
+                  }
+                },
+                [length]: 1
+              ]
+            },
+            elifBlocks: [ [length]: 0 ],
+            elseBlock: null
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'linkNext',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'undefined',
+                  value: undefined
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'removed' }
+          },
+          {
+            tokenType: 'FuncCall',
+            functionName: 'linkPrev',
+            args: {
+              tokenType: 'ArgumentsIn',
+              args: [
+                {
+                  tokenType: 'Primitive',
+                  type: 'undefined',
+                  value: undefined
+                },
+                [length]: 1
+              ]
+            },
+            scope: { tokenType: 'ScopeSpec', scope: 'removed' }
+          },
+          {
             tokenType: 'Reassignment',
             variable: {
               tokenType: 'Variable',
@@ -897,7 +1072,7 @@
               scope: { tokenType: 'ScopeSpec', scope: 'removed' }
             }
           },
-          [length]: 9
+          [length]: 11
         ]
       },
       [length]: 8
