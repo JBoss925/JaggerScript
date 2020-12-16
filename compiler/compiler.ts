@@ -277,6 +277,16 @@ function handlePrimitive(ast: any, additionalData?: any): Value {
     };
     return value;
   }
+  if (ast.type == "undefined") {
+    let value: Value = {
+      token: Tokens.Value,
+      type: ValueType.Undefined,
+      value: undefined,
+      typeStr: "undefined",
+      numLiveReferences: 0
+    };
+    return value;
+  }
   throw new Error("Unrecognized primitive!")
 }
 

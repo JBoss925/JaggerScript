@@ -378,7 +378,7 @@ function checkEq(val: Primitives | Instance, val2: Primitives | Instance) {
 }
 
 function checkNeq(val: Primitives | Instance, val2: Primitives | Instance) {
-  if (isInstance(val) || isInstance(val2)) {
+  if (isInstance(val) && isInstance(val2)) {
     return (val as Instance).pointer != (val2 as Instance).pointer;
   }
   return (val as Primitives) != (val2 as Primitives);
@@ -548,7 +548,6 @@ function evalReassignment(ast: Reassignment, state: IS): [Primitives | Instance,
   }
   ast.variable.typeStr = varVal.typeStr;
   ast.variable.type = getType(expVal);
-  varVal.value = expVal;
   // THIS IS THE MOST IMPORTANT STEP TO DO NEXT
   // ADD HEAPPTR AND ISONHEAP TO VALUE TYPE
   // MAYBE DO THIS HEAP CHECKING ON DEFINITION AS WELL
@@ -674,10 +673,8 @@ function evalFuncCall(ast: FuncCall, state: IS): [Primitives | Instance, IS] {
     // console.log check -------------------------------------------------------
     if (ast.scope.scope.length == 1 && ast.scope.scope[0] == "console" && ast.functionName == "log") {
       if (ast.args) {
-        for (let arg of ast.args.args) {
-          let [innerVal, newStateLog] = evalAST(arg, newState);
-          newState = newStateLog;
-          sendMsg({ tag: 'log', content: innerVal });
+        for (let arg of argsVals) {
+          sendMsg({ tag: 'log', content: arg });
         }
       }
       return [undefined, newState];
@@ -879,7 +876,7 @@ function evalDefinition(ast: Definition, state: IS, isGlobal?: boolean): [Primit
     if (isGlobal) {
       newState.runningInstance.globalScope.set(ast.identifier, expVal.pointer);
     } else {
-      [, newState] = setVariableValue(newVariable, heapVal, newState, false);
+      [, newState] = setVariableValue(newVariable, heapVal, newState);
     }
     return [expVal, newState];
   }
@@ -896,7 +893,7 @@ function evalDefinition(ast: Definition, state: IS, isGlobal?: boolean): [Primit
       value: expVal, typeStr: ast.type,
       numLiveReferences: 1, type: getType(expVal),
       token: Tokens.Value
-    }, newState, false);
+    }, newState);
   }
   return [expVal, newState];
 }
