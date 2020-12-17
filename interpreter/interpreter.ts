@@ -575,13 +575,13 @@ function evalReassignment(ast: Reassignment, state: IS): [Primitives | Instance,
     // VarVal is on the heap instead of isInstance
     if (isOnHeap(varVal)) {
       [, newState] = setVariableValue(ast.variable, {
-        typeStr: getTypeStr(expVal), numLiveReferences: 1, value: expVal,
+        typeStr: varVal.typeStr, numLiveReferences: 1, value: expVal,
         type: getType(expVal), token: Tokens.Value
       }, newState);
       varVal.numLiveReferences--;
     } else {
       [, newState] = setVariableValue(ast.variable, {
-        typeStr: getTypeStr(expVal), numLiveReferences: varVal.numLiveReferences, value: expVal,
+        typeStr: varVal.typeStr, numLiveReferences: varVal.numLiveReferences, value: expVal,
         type: getType(expVal), token: Tokens.Value
       }, newState);
       varVal.numLiveReferences--;
@@ -727,7 +727,7 @@ function evalFunction(ast: Func, argsVals: (Primitives | Instance)[], state: IS)
         newState.stack[newState.stackPointer].set(argdef.identifier, instVal);
       } else {
         newState.stack[newState.stackPointer].set(argdef.identifier, {
-          value: argsVals[ind], typeStr: getTypeStr(argsVals[ind]),
+          value: argsVals[ind], typeStr: argdef.type,
           numLiveReferences: 1, type: getType(argsVals[ind]),
           token: Tokens.Value
         });
@@ -776,7 +776,7 @@ function evalConstructor(ast: Constructor, instance: Instance, argsIn: ArgsIn | 
         newState.stack[newState.stackPointer].set(argdef.identifier, instVal);
       } else {
         newState.stack[newState.stackPointer].set(argdef.identifier, {
-          value: argsVals[ind], typeStr: getTypeStr(argsVals[ind]),
+          value: argsVals[ind], typeStr: argdef.type,
           numLiveReferences: 1, type: getType(argsVals[ind]),
           token: Tokens.Value
         });
