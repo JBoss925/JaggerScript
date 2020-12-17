@@ -2408,7 +2408,7 @@
         heapPtr: '29'
       },
       '30' => {
-        typeStr: 'undefined',
+        typeStr: 'Node',
         numLiveReferences: 1,
         value: undefined,
         type: 'undefined',
@@ -2416,7 +2416,7 @@
         heapPtr: '30'
       },
       '31' => {
-        typeStr: 'undefined',
+        typeStr: 'Node',
         numLiveReferences: 1,
         value: undefined,
         type: 'undefined',
@@ -2432,7 +2432,7 @@
         heapPtr: '32'
       },
       '33' => {
-        typeStr: 'undefined',
+        typeStr: 'Node',
         numLiveReferences: 1,
         value: undefined,
         type: 'undefined',
@@ -2440,7 +2440,7 @@
         heapPtr: '33'
       },
       '34' => {
-        typeStr: 'undefined',
+        typeStr: 'Node',
         numLiveReferences: 1,
         value: undefined,
         type: 'undefined',
@@ -2448,7 +2448,7 @@
         heapPtr: '34'
       },
       '35' => {
-        typeStr: 'undefined',
+        typeStr: 'Node',
         numLiveReferences: 1,
         value: undefined,
         type: 'undefined',
