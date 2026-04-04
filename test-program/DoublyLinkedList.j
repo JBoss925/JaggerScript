@@ -20,20 +20,15 @@ class Main {
       console.log(list.get(i));
       i = i + 1;
     }
-    console.log('');
-    console.log('Got second element:');
+    console.log('\nGot second element:');
     console.log(list.get(1));
-    console.log('');
-    console.log('Removed third element:');
+    console.log('\nRemoved third element:');
     console.log(list.remove(2));
-    console.log('');
-    console.log('Removed first element:');
+    console.log('\nRemoved first element:');
     console.log(list.remove(0));
-    console.log('');
-    console.log('Final list length:');
+    console.log('\nFinal list length:');
     console.log(list.length);
-    console.log('');
-    console.log('Final elements:');
+    console.log('\nFinal elements:');
     number j = 0;
     while(j < list.length){
       console.log(list.get(j));
