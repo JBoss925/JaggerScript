@@ -1,5 +1,5 @@
 import { argv } from 'process';
-import { inspect, isObject } from 'util';
+import { inspect } from 'util';
 import { ArgDef, ArgsDefine, ArgsIn, ArithmeticExpression, ArithmeticOperation, BooleanExpression, Break, Class, Comment, Definition, Expression, Func, FuncCall, IfBlock, Instantiate, Primitives, Program, Reassignment, Return, Scope, ScopeSpec, Token, Tokens, ValueType, Variable, WhileLoop, Instance, Constructor, ArithmeticOperator, Value } from '../parser/program';
 import { sendMsg } from './messageReducer';
 
@@ -40,6 +40,10 @@ class HeapWrapper<T, S> {
 }
 
 var id = 0;
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object';
+}
 
 function isValue(obj: any) {
   return ["boolean", "string", "number"].includes(typeof (obj)) || obj == undefined || isInstance(obj);
