@@ -1,0 +1,42 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ValueType = exports.Tokens = void 0;
+// -----------------------------------------------------------------------------
+var Tokens;
+(function (Tokens) {
+    Tokens["Program"] = "P";
+    Tokens["Class"] = "C";
+    Tokens["Constructor"] = "CO";
+    Tokens["Func"] = "F";
+    Tokens["Definition"] = "D";
+    Tokens["Reassignment"] = "R";
+    Tokens["Return"] = "RT";
+    Tokens["Break"] = "B";
+    Tokens["BreakException"] = "BE";
+    Tokens["Instantiate"] = "I";
+    Tokens["Instance"] = "IN";
+    Tokens["FuncCall"] = "FC";
+    Tokens["IfBlock"] = "If";
+    Tokens["ElifBlock"] = "EI";
+    Tokens["ElseBlock"] = "E";
+    Tokens["WhileLoop"] = "W";
+    Tokens["ArgsDefine"] = "A";
+    Tokens["ArgDef"] = "AD";
+    Tokens["ArgsIn"] = "AI";
+    Tokens["Variable"] = "VA";
+    Tokens["ScopeSpec"] = "S";
+    Tokens["ArithmeticExpression"] = "AE";
+    Tokens["ArithmeticOperation"] = "AO";
+    Tokens["BooleanExpression"] = "BE";
+    Tokens["Value"] = "V";
+    Tokens["Comment"] = "COM";
+})(Tokens || (exports.Tokens = Tokens = {}));
+var ValueType;
+(function (ValueType) {
+    ValueType["String"] = "string";
+    ValueType["Number"] = "number";
+    ValueType["Boolean"] = "boolean";
+    ValueType["Instance"] = "instance";
+    ValueType["Undefined"] = "undefined";
+    ValueType["Unknown"] = "unknown";
+})(ValueType || (exports.ValueType = ValueType = {}));

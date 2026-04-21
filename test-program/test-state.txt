@@ -232,25 +232,7 @@
                         {
                           token: 'V',
                           type: 'string',
-                          value: '',
-                          typeStr: 'string',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-                  },
-                  {
-                    token: 'FC',
-                    functionName: 'log',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'string',
-                          value: 'Got second element:',
+                          value: '\\nGot second element:',
                           typeStr: 'string',
                           numLiveReferences: 0
                         },
@@ -300,25 +282,7 @@
                         {
                           token: 'V',
                           type: 'string',
-                          value: '',
-                          typeStr: 'string',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-                  },
-                  {
-                    token: 'FC',
-                    functionName: 'log',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'string',
-                          value: 'Removed third element:',
+                          value: '\\nRemoved third element:',
                           typeStr: 'string',
                           numLiveReferences: 0
                         },
@@ -368,25 +332,7 @@
                         {
                           token: 'V',
                           type: 'string',
-                          value: '',
-                          typeStr: 'string',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-                  },
-                  {
-                    token: 'FC',
-                    functionName: 'log',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'string',
-                          value: 'Removed first element:',
+                          value: '\\nRemoved first element:',
                           typeStr: 'string',
                           numLiveReferences: 0
                         },
@@ -436,25 +382,7 @@
                         {
                           token: 'V',
                           type: 'string',
-                          value: '',
-                          typeStr: 'string',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-                  },
-                  {
-                    token: 'FC',
-                    functionName: 'log',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'string',
-                          value: 'Final list length:',
+                          value: '\\nFinal list length:',
                           typeStr: 'string',
                           numLiveReferences: 0
                         },
@@ -493,25 +421,7 @@
                         {
                           token: 'V',
                           type: 'string',
-                          value: '',
-                          typeStr: 'string',
-                          numLiveReferences: 0
-                        },
-                        [length]: 1
-                      ]
-                    },
-                    scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-                  },
-                  {
-                    token: 'FC',
-                    functionName: 'log',
-                    args: {
-                      token: 'AI',
-                      args: [
-                        {
-                          token: 'V',
-                          type: 'string',
-                          value: 'Final elements:',
+                          value: '\\nFinal elements:',
                           typeStr: 'string',
                           numLiveReferences: 0
                         },
@@ -626,7 +536,7 @@
                     ]
                   },
                   { token: 'RT', value: undefined },
-                  [length]: 25
+                  [length]: 20
                 ]
               },
               [length]: 1
@@ -2697,25 +2607,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Got second element:',
+                    value: '\\nGot second element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -2762,25 +2654,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Removed third element:',
+                    value: '\\nRemoved third element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -2827,25 +2701,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Removed first element:',
+                    value: '\\nRemoved first element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -2892,25 +2748,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Final list length:',
+                    value: '\\nFinal list length:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -2946,25 +2784,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Final elements:',
+                    value: '\\nFinal elements:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -3073,7 +2893,7 @@
               ]
             },
             { token: 'RT', value: undefined },
-            [length]: 25
+            [length]: 20
           ]
         },
         [length]: 1
@@ -3310,25 +3130,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Got second element:',
+                    value: '\\nGot second element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -3375,25 +3177,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Removed third element:',
+                    value: '\\nRemoved third element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -3440,25 +3224,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Removed first element:',
+                    value: '\\nRemoved first element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -3505,25 +3271,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Final list length:',
+                    value: '\\nFinal list length:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -3559,25 +3307,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Final elements:',
+                    value: '\\nFinal elements:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -3686,7 +3416,7 @@
               ]
             },
             { token: 'RT', value: undefined },
-            [length]: 25
+            [length]: 20
           ]
         },
         [length]: 1
@@ -4837,25 +4567,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Got second element:',
+                    value: '\\nGot second element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -4902,25 +4614,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Removed third element:',
+                    value: '\\nRemoved third element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -4967,25 +4661,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Removed first element:',
+                    value: '\\nRemoved first element:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -5032,25 +4708,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Final list length:',
+                    value: '\\nFinal list length:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -5086,25 +4744,7 @@
                   {
                     token: 'V',
                     type: 'string',
-                    value: '',
-                    typeStr: 'string',
-                    numLiveReferences: 0
-                  },
-                  [length]: 1
-                ]
-              },
-              scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-            },
-            {
-              token: 'FC',
-              functionName: 'log',
-              args: {
-                token: 'AI',
-                args: [
-                  {
-                    token: 'V',
-                    type: 'string',
-                    value: 'Final elements:',
+                    value: '\\nFinal elements:',
                     typeStr: 'string',
                     numLiveReferences: 0
                   },
@@ -5213,7 +4853,7 @@
               ]
             },
             { token: 'RT', value: undefined },
-            [length]: 25
+            [length]: 20
           ]
         },
         [length]: 1
@@ -5452,25 +5092,7 @@
                 {
                   token: 'V',
                   type: 'string',
-                  value: '',
-                  typeStr: 'string',
-                  numLiveReferences: 0
-                },
-                [length]: 1
-              ]
-            },
-            scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-          },
-          {
-            token: 'FC',
-            functionName: 'log',
-            args: {
-              token: 'AI',
-              args: [
-                {
-                  token: 'V',
-                  type: 'string',
-                  value: 'Got second element:',
+                  value: '\\nGot second element:',
                   typeStr: 'string',
                   numLiveReferences: 0
                 },
@@ -5517,25 +5139,7 @@
                 {
                   token: 'V',
                   type: 'string',
-                  value: '',
-                  typeStr: 'string',
-                  numLiveReferences: 0
-                },
-                [length]: 1
-              ]
-            },
-            scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-          },
-          {
-            token: 'FC',
-            functionName: 'log',
-            args: {
-              token: 'AI',
-              args: [
-                {
-                  token: 'V',
-                  type: 'string',
-                  value: 'Removed third element:',
+                  value: '\\nRemoved third element:',
                   typeStr: 'string',
                   numLiveReferences: 0
                 },
@@ -5582,25 +5186,7 @@
                 {
                   token: 'V',
                   type: 'string',
-                  value: '',
-                  typeStr: 'string',
-                  numLiveReferences: 0
-                },
-                [length]: 1
-              ]
-            },
-            scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-          },
-          {
-            token: 'FC',
-            functionName: 'log',
-            args: {
-              token: 'AI',
-              args: [
-                {
-                  token: 'V',
-                  type: 'string',
-                  value: 'Removed first element:',
+                  value: '\\nRemoved first element:',
                   typeStr: 'string',
                   numLiveReferences: 0
                 },
@@ -5647,25 +5233,7 @@
                 {
                   token: 'V',
                   type: 'string',
-                  value: '',
-                  typeStr: 'string',
-                  numLiveReferences: 0
-                },
-                [length]: 1
-              ]
-            },
-            scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-          },
-          {
-            token: 'FC',
-            functionName: 'log',
-            args: {
-              token: 'AI',
-              args: [
-                {
-                  token: 'V',
-                  type: 'string',
-                  value: 'Final list length:',
+                  value: '\\nFinal list length:',
                   typeStr: 'string',
                   numLiveReferences: 0
                 },
@@ -5701,25 +5269,7 @@
                 {
                   token: 'V',
                   type: 'string',
-                  value: '',
-                  typeStr: 'string',
-                  numLiveReferences: 0
-                },
-                [length]: 1
-              ]
-            },
-            scope: { token: 'S', scope: [ 'console', [length]: 1 ] }
-          },
-          {
-            token: 'FC',
-            functionName: 'log',
-            args: {
-              token: 'AI',
-              args: [
-                {
-                  token: 'V',
-                  type: 'string',
-                  value: 'Final elements:',
+                  value: '\\nFinal elements:',
                   typeStr: 'string',
                   numLiveReferences: 0
                 },
@@ -5828,7 +5378,7 @@
             ]
           },
           { token: 'RT', value: undefined },
-          [length]: 25
+          [length]: 20
         ]
       }
     },

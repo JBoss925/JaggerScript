@@ -178,22 +178,10 @@
             args: {
               tokenType: 'ArgumentsIn',
               args: [
-                { tokenType: 'Primitive', type: 'string', value: '' },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
                 {
                   tokenType: 'Primitive',
                   type: 'string',
-                  value: 'Got second element:'
+                  value: '\\nGot second element:'
                 },
                 [length]: 1
               ]
@@ -233,22 +221,10 @@
             args: {
               tokenType: 'ArgumentsIn',
               args: [
-                { tokenType: 'Primitive', type: 'string', value: '' },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
                 {
                   tokenType: 'Primitive',
                   type: 'string',
-                  value: 'Removed third element:'
+                  value: '\\nRemoved third element:'
                 },
                 [length]: 1
               ]
@@ -288,22 +264,10 @@
             args: {
               tokenType: 'ArgumentsIn',
               args: [
-                { tokenType: 'Primitive', type: 'string', value: '' },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
                 {
                   tokenType: 'Primitive',
                   type: 'string',
-                  value: 'Removed first element:'
+                  value: '\\nRemoved first element:'
                 },
                 [length]: 1
               ]
@@ -343,22 +307,10 @@
             args: {
               tokenType: 'ArgumentsIn',
               args: [
-                { tokenType: 'Primitive', type: 'string', value: '' },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
                 {
                   tokenType: 'Primitive',
                   type: 'string',
-                  value: 'Final list length:'
+                  value: '\\nFinal list length:'
                 },
                 [length]: 1
               ]
@@ -387,22 +339,10 @@
             args: {
               tokenType: 'ArgumentsIn',
               args: [
-                { tokenType: 'Primitive', type: 'string', value: '' },
-                [length]: 1
-              ]
-            },
-            scope: { tokenType: 'ScopeSpec', scope: 'console' }
-          },
-          {
-            tokenType: 'FuncCall',
-            functionName: 'log',
-            args: {
-              tokenType: 'ArgumentsIn',
-              args: [
                 {
                   tokenType: 'Primitive',
                   type: 'string',
-                  value: 'Final elements:'
+                  value: '\\nFinal elements:'
                 },
                 [length]: 1
               ]
@@ -487,7 +427,7 @@
             ]
           },
           { tokenType: 'Return', value: null },
-          [length]: 25
+          [length]: 20
         ]
       },
       [length]: 2

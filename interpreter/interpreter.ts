@@ -479,8 +479,9 @@ function evalWhileLoop(ast: WhileLoop, state: IS): [undefined, IS] {
         [, newState] = evalAST(w, newState);
       }
     } catch (e) {
-      if (e.token == Tokens.BreakException) {
-        newState = e.state;
+      const error = e as { token?: Tokens; state?: IS };
+      if (error.token == Tokens.BreakException && error.state) {
+        newState = error.state;
         break;
       } else {
         throw e;
